@@ -17,6 +17,9 @@ namespace Alg_Lab3
         public int Count { get { return count; } }
         public bool IsEmpty { get { return count == 0; } }
 
+        public DoublyNode<T> Head { get { return head; } }
+        public DoublyNode<T> Tail { get { return tail; } }
+
         public void Add(T data)
         {
             DoublyNode<T> node = new DoublyNode<T>(data);
