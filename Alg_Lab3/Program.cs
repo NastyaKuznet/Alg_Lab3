@@ -4,8 +4,15 @@
     {
         static void Main(string[] args)
         {
-            TestDoublyLinkedList();
-            //List<string> list = new List<string>();         
+            MyStack stack = new MyStack();
+            stack.Push(1);
+            stack.Push(true);
+            stack.Push(3);
+
+            stack.Print();
+
+            //TestDoublyLinkedList();
+            //List<string> list = new List<string>();
             //list.Remove("a");
         }
 
