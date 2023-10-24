@@ -4,12 +4,14 @@
     {
         static void Main(string[] args)
         {
-            MyStack stack = new MyStack();
-            stack.Push(1);
-            stack.Push(true);
-            stack.Push(3);
+            TestPostfixCalculator testCalc = new TestPostfixCalculator();
+            testCalc.Start();
+            //MyStack stack = new MyStack();
+            //stack.Push(1);
+            //stack.Push(true);
+            //stack.Push(3);
 
-            stack.Print();
+            //stack.Print();
 
             //TestDoublyLinkedList();
             //List<string> list = new List<string>();
