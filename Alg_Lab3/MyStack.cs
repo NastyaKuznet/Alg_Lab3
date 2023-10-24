@@ -12,7 +12,7 @@ namespace Alg_Lab3
         int count;
 
         public int Count { get { return count; } }
-        public bool isEmpty { get { return count == 0; } }
+        public bool IsEmpty { get { return count == 0; } }
 
         public void Push(object data)
         {
