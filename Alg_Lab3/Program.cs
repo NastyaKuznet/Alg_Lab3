@@ -4,27 +4,23 @@
     {
         static void Main(string[] args)
         {
-            TestPostfixCalculator testCalc = new TestPostfixCalculator();
-            testCalc.Start();
-            //MyStack stack = new MyStack();
-            //stack.Push(1);
-            //stack.Push(true);
-            //stack.Push(3);
+            //TestPostfixCalculator testCalc = new TestPostfixCalculator();
+            //testCalc.Start();
+            MyStack stack = new MyStack();
+            stack.Push(1);
+            stack.Push(true);
+            stack.Push(3);
 
-            //stack.Print();
+            stack.Print();
 
-            //TestDoublyLinkedList();
-            //List<string> list = new List<string>();
-            //list.Remove("a");
-
-            StackController stackController = new StackController();
+            //StackController stackController = new StackController();
             //stackController.StartWorkWithFile("\"..\\\\..\\\\..\\\\..\\\\1.txt");
-            List<string> list = new List<string>();
-            list.Add("4");
-            list.Add("1,cat");
-            list.Add("2");
-            list.Add("2");
-            stackController.StartWorkWithList(list);
+            //List<string> list = new List<string>();
+            //list.Add("4");
+            //list.Add("1,cat");
+            //list.Add("2");
+            //list.Add("2");
+            //stackController.StartWorkWithList(list);
         }
 
         static void TestDoublyLinkedList()

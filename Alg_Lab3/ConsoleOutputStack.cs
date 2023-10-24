@@ -139,7 +139,7 @@ namespace Alg_Lab3
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Состояние стека:");
             _newStack.Print();
-            Console.WriteLine($"Вывод при вывозе команды IsEmpty: {_newStack.IsEmpty()}\n");
+            Console.WriteLine($"Вывод при вывозе команды IsEmpty: {_newStack.IsEmpty}\n");
         }
 
         private static void DoPrint()

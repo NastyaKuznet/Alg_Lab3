@@ -63,10 +63,6 @@ namespace Alg_Lab3
             }
         }
 
-        public bool IsEmpty()
-        {
-            return list.Count == 0;
-        }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
