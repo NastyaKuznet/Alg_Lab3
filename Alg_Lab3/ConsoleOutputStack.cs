@@ -12,49 +12,65 @@ namespace Alg_Lab3
 {
     public class ConsoleOutputStack
     {
-        private List<CommandsForStack> keyValuePairs = new List<CommandsForStack>();
-        private MyStack _newStack = new MyStack();
-        private int _maxLen = 2;
-        private string line;
-        private string emptyLine = new string(' ', 15);
-        public void StartPrintCommands(string[] commands, MyStack stack) 
+        private static List<CommandsForStack> keyValuePairs = new List<CommandsForStack>();
+        private static MyStack _newStack = new MyStack();
+        private static int _maxLen = 2;
+        private static string line;
+        private static string emptyLine = new string(' ', 15);
+        public static void StartPrintCommands(string[] commands, MyStack stack) 
         {
             GetDataFromList(commands);
             _newStack = stack;
             PrintCommands();
         }
 
-        private void GetDataFromList(string[] commands)
+        public static void StartPrintCommand(string command, string value = null)
+        {
+            keyValuePairs.Clear();
+            if (value == null)
+            {
+                GetData(command);
+            }
+            PrintCommands();
+        }
+
+
+        private static void GetDataFromList(string[] commands)
         {
             keyValuePairs.Clear();
             foreach (string command in commands)
             {
-                if (command.Contains(','))
-                {
-                    string value = command.Split(',')[1];
-                    keyValuePairs.Add(new CommandsForStack(Commands.PUSH, value));
-                    _maxLen = Math.Max(value.Length, _maxLen);
-                    continue;
-                }
-                switch (command)
-                {
-                    case "2":
-                        keyValuePairs.Add(new CommandsForStack(Commands.POP));
-                        break;
-                    case "3":
-                        keyValuePairs.Add(new CommandsForStack(Commands.TOP));
-                        break;
-                    case "4":
-                        keyValuePairs.Add(new CommandsForStack(Commands.ISEMPTY));
-                        break;
-                    case "5":
-                        keyValuePairs.Add(new CommandsForStack(Commands.PRINT));
-                        break;
-                }
+                GetData(command);
             }
         }
 
-        private void PrintCommands()
+        private static void GetData(string command)
+        {
+            if (command.Contains(','))
+            {
+                string value = command.Split(',')[1];
+                keyValuePairs.Add(new CommandsForStack(Commands.PUSH, value));
+                _maxLen = Math.Max(value.Length, _maxLen);
+                return;
+            }
+            switch (command)
+            {
+                case "2":
+                    keyValuePairs.Add(new CommandsForStack(Commands.POP));
+                    break;
+                case "3":
+                    keyValuePairs.Add(new CommandsForStack(Commands.TOP));
+                    break;
+                case "4":
+                    keyValuePairs.Add(new CommandsForStack(Commands.ISEMPTY));
+                    break;
+                case "5":
+                    keyValuePairs.Add(new CommandsForStack(Commands.PRINT));
+                    break;
+            }
+        }
+
+        private static void PrintCommands()
         {
             foreach(CommandsForStack command in keyValuePairs)
             {
@@ -79,7 +95,8 @@ namespace Alg_Lab3
             }
         }
 
-        private void DoPush(string value)
+
+        private static void DoPush(string value)
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine($"\nКоманда 1,{value} - PUSH({value})" + "\n");
@@ -91,7 +108,7 @@ namespace Alg_Lab3
             //PrintSrackWithGlow($"<-- Push {value}");
         }
 
-        private void DoPop()
+        private static void DoPop()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("\nКоманда 2 - POP" + "\n");
@@ -104,7 +121,7 @@ namespace Alg_Lab3
             //PrintStackWithEmptyRow();
         }
 
-        private void DoTop()
+        private static void DoTop()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("\nКоманда 3 - TOP" + "\n");
@@ -115,7 +132,7 @@ namespace Alg_Lab3
             Console.WriteLine($"Вывод при вывозе команды Top: {value}");
         }
 
-        private void DoIsEmpty()
+        private static void DoIsEmpty()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("\nКоманда 4 - ISEMPTY" + "\n");
@@ -125,7 +142,7 @@ namespace Alg_Lab3
             Console.WriteLine($"Вывод при вывозе команды IsEmpty: {_newStack.IsEmpty()}\n");
         }
 
-        private void DoPrint()
+        private static void DoPrint()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("\nКоманда 5 - PRINT" + "\n");
@@ -134,7 +151,7 @@ namespace Alg_Lab3
             _newStack.Print();
         }
 
-        private void PrintSrackWithGlow(string message)
+        private static void PrintSrackWithGlow(string message)
         {
             FindMaxLen(_newStack);
             line = new string('-', _maxLen + 2);
@@ -158,7 +175,7 @@ namespace Alg_Lab3
             Console.WriteLine("\n");
         }
 
-        private void WriteInConsole(string line, object item, int maxLen, string message = "", int size = 0)
+        private static void WriteInConsole(string line, object item, int maxLen, string message = "", int size = 0)
         {
             string value = Convert.ToString(item);
             string str = new string(' ', maxLen - value.Length);
@@ -167,7 +184,7 @@ namespace Alg_Lab3
         }
 
 
-        private void FindMaxLen(MyStack myStack)
+        private static void FindMaxLen(MyStack myStack)
         {
             _maxLen = 0;
             foreach (var item in myStack)
@@ -177,7 +194,7 @@ namespace Alg_Lab3
             }
         }
 
-        private void PrintStacks(Commands command, string pushValue = "")
+        private static void PrintStacks(Commands command, string pushValue = "")
         {
             FindMaxLen(_newStack);
             _maxLen = Math.Max(pushValue.ToString().Length, _maxLen);
@@ -199,10 +216,14 @@ namespace Alg_Lab3
                     continue;
                 }           
             }
+            if(_newStack.Count == 0 && command == Commands.PUSH)
+            {
+                PrintForPush(pushValue);
+            }
             Console.WriteLine("\n");
         }
-       
-        private void PrintForPop(object value)
+
+        private static void PrintForPop(object value)
         {
             string value1 = Convert.ToString(value);
             string value2 = "";
@@ -215,7 +236,7 @@ namespace Alg_Lab3
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        private void PrintForPush(object value)
+        private static void PrintForPush(object value)
         {
             string value2 = Convert.ToString(value);
             string value1 = "";

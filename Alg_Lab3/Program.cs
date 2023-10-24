@@ -16,7 +16,13 @@
             //list.Remove("a");
 
             StackController stackController = new StackController();
-            stackController.StartWork("\"..\\\\..\\\\..\\\\..\\\\1.txt");
+            //stackController.StartWorkWithFile("\"..\\\\..\\\\..\\\\..\\\\1.txt");
+            List<string> list = new List<string>();
+            list.Add("4");
+            list.Add("1,cat");
+            list.Add("2");
+            list.Add("2");
+            stackController.StartWorkWithList(list);
         }
 
         static void TestDoublyLinkedList()
