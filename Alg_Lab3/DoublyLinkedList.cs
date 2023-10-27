@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Alg_Lab3
 {
@@ -17,8 +18,21 @@ namespace Alg_Lab3
         public int Count { get { return count; } }
         public bool IsEmpty { get { return count == 0; } }
 
-        public DoublyNode<T> Head { get { return head; } }
-        public DoublyNode<T> Tail { get { return tail; } }
+        public DoublyNode<T> Head { get { return head; } set { head = value; } }
+        public DoublyNode<T> Tail { get { return tail; } set { tail = value; } }
+
+        public void PrintList(DoublyNode<T> head)
+        {
+            if (head == null)
+                Console.Write("Doubly Linked list empty");
+
+            while (head != null)
+            {
+                Console.Write(head.Data + " ");
+                head = head.Next;
+            }
+            Console.WriteLine();
+        }
 
         public void Add(T data)
         {
