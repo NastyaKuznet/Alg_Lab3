@@ -1,4 +1,6 @@
-﻿using Lab_Alg_1;
+﻿
+using Alg_Lab3.DoublyLinkedListFolder;
+using Alg_Lab3.InterfaceFolder;
 
 namespace Alg_Lab3
 {

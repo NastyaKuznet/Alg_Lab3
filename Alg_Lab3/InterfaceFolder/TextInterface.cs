@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab_Alg_1
+namespace Alg_Lab3.InterfaceFolder
 {
     public static class TextInterface
     {
@@ -30,7 +30,7 @@ namespace Lab_Alg_1
         static string stackWithCommands = "Введите команды через пробел: ";
         //static string endListAlgo = "Выберите операцию. Для смены настроек алгоритма напишите \"настройки\"";
         static string endListAlgo = "\nДля возвращения на главный экран нажмите \"0\"";
-        static string[] numbersAlgoritms = new string[] {"1.1", "1.2", "4.1", "4.4", "4.8", "4.9"};
+        static string[] numbersAlgoritms = new string[] { "1.1", "1.2", "4.1", "4.4", "4.8", "4.9" };
 
         //public static string[] TextSetting { get { return textSetting; } }
         //public static Dictionary<string, string> Heaps { get { return heaps; } }
@@ -39,6 +39,6 @@ namespace Lab_Alg_1
         public static string EndListAlgo { get { return endListAlgo; } }
         public static string CommandsForStack { get { return сommandsForStack; } }
         public static string StackWithCommands { get { return stackWithCommands; } }
-        public static string[] NumbersAlgoritms { get { return numbersAlgoritms;} }
+        public static string[] NumbersAlgoritms { get { return numbersAlgoritms; } }
     }
 }

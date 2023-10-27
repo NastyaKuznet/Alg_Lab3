@@ -1,4 +1,4 @@
-﻿using Lab_Alg_1;
+﻿using Alg_Lab3.InterfaceFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;

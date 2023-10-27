@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab_Alg_1
+namespace Alg_Lab3.InterfaceFolder
 {
     public class Interface
     {
@@ -35,7 +35,7 @@ namespace Lab_Alg_1
         private void WritePath()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("Путь сохранения результата : " );
+            Console.Write("Путь сохранения результата : ");
             Console.ForegroundColor = ConsoleColor.Green;
             //Console.WriteLine(ImportantData.Path);
         }
@@ -121,7 +121,7 @@ namespace Lab_Alg_1
         {
             Console.Clear();
             //WriteSetting();
-           // Console.WriteLine(TextInterface.Heaps["algorithm"]);
+            // Console.WriteLine(TextInterface.Heaps["algorithm"]);
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(TextInterface.ListAlgorithms);
             Console.ForegroundColor = ConsoleColor.White;
@@ -132,10 +132,10 @@ namespace Lab_Alg_1
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(TextInterface.EndListAlgo);
             Console.ForegroundColor = ConsoleColor.White;
-            if (answer ==  null) answer = Console.ReadLine();
+            if (answer == null) answer = Console.ReadLine();
             switch (answer)
             {
-                case ("1.1"):
+                case "1.1":
                     Console.WriteLine(TextInterface.StackWithFile);
                     string? answer1 = Console.ReadLine();
                     if (answer1 == "0") Work();
@@ -147,7 +147,7 @@ namespace Lab_Alg_1
                     }
                     ChooseNext();
                     break;
-                case ("1.2"):
+                case "1.2":
                     Console.WriteLine(TextInterface.CommandsForStack);
                     string? answer2 = Console.ReadLine();
                     if (answer2 == "0") Work();
@@ -168,7 +168,7 @@ namespace Lab_Alg_1
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Неверная команда, попробуйте еще раз");
-                    Console.ForegroundColor= ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.White;
                     ChooseNext();
                     break;
             }
