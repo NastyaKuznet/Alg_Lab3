@@ -12,9 +12,9 @@ namespace Alg_Lab3
         public static bool Check = true;
         private static MyStack _myStack = new MyStack();
 
-        public static void IsNumberAlgorithm(string? str)
+        public static void IsNumberAlgorithm(string? str, string[] commands)
         {
-            Check = TextInterface.NumbersAlgoritms.Contains(str);
+            Check = commands.Contains(str);
             if (!Check)
             {
                 Console.ForegroundColor = ConsoleColor.Red;

@@ -24,8 +24,9 @@ namespace Alg_Lab3
         //    PrintCommands();
         //}
 
-        public static void StartPrintCommands(string[] commands)
+        public static void StartPrintCommands(string[] commands, MyStack myStack)
         {
+            _newStack = myStack;
             GetDataFromList(commands);
             PrintCommands();
         }

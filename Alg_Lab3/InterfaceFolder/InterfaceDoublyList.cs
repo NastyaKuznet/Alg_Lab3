@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alg_Lab3
+namespace Alg_Lab3.InterfaceFolder
 {
-    public class TestTask4
+    public class InterfaceDoublyList
     {
         public void TestСountElementsContainInt()
         {
-            Task4 task = new Task4();
+            OperationsForDoublyList task = new OperationsForDoublyList();
             DoublyLinkedList<object> list = new DoublyLinkedList<object>
             {
                 1,
@@ -33,7 +33,7 @@ namespace Alg_Lab3
 
         public void TestInsertInYourselfAfterNumber()
         {
-            Task4 task = new Task4();
+            OperationsForDoublyList task = new OperationsForDoublyList();
             DoublyLinkedList<object> list = new DoublyLinkedList<object>
             {
                 1,
@@ -53,7 +53,7 @@ namespace Alg_Lab3
 
         public void TestInsertItemIntoOrderedList()
         {
-            Task4 task = new Task4();
+            OperationsForDoublyList task = new OperationsForDoublyList();
             DoublyLinkedList<int> list = new DoublyLinkedList<int>
             {
                 1,
@@ -72,7 +72,7 @@ namespace Alg_Lab3
 
         public void TestInsertYourselfEndEYourself()
         {
-            Task4 task = new Task4();
+            OperationsForDoublyList task = new OperationsForDoublyList();
             DoublyLinkedList<object> list = new DoublyLinkedList<object>
             {
                 1,

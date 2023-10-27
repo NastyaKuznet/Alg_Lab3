@@ -9,7 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Alg_Lab3.DoublyLinkedListFolder
 {
-    public class Task4
+    public class OperationsForDoublyList 
     {
         public static void ReverseList(DoublyLinkedList<object> list)
         {
