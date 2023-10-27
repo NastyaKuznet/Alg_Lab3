@@ -203,14 +203,10 @@ namespace Alg_Lab3
                     PrintCell(i);
                 }
                 else
-                {
-                    PrintCell(i);
-                }           
+                    PrintCell(i);        
             }
             if((_newStack.Count == 0 || _newStack == null) && command == Commands.PUSH)
-            {
                 PrintForPush(pushValue);
-            }
             Console.WriteLine("\n");
         }
 
