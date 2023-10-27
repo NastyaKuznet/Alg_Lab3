@@ -17,20 +17,17 @@ namespace Alg_Lab3
         private static int _maxLen = 2;
         private static string line;
         private static string emptyLine = new string(' ', 15);
-        public static void StartPrintCommands(string[] commands, MyStack stack) 
-        {
-            GetDataFromList(commands);
-            _newStack = stack;
-            PrintCommands();
-        }
+        //public static void StartPrintCommands(string[] commands, MyStack stack) 
+        //{
+        //    GetDataFromList(commands);
+        //    _newStack = stack;
+        //    PrintCommands();
+        //}
 
-        public static void StartPrintCommand(string command, string value = null)
+        public static void StartPrintCommands(string[] commands, MyStack myStack)
         {
-            keyValuePairs.Clear();
-            if (value == null)
-            {
-                GetData(command);
-            }
+            _newStack = myStack;
+            GetDataFromList(commands);
             PrintCommands();
         }
 
@@ -104,8 +101,6 @@ namespace Alg_Lab3
             Console.WriteLine("Состояние стека до и после:");
             PrintStacks(Commands.PUSH, value);
             _newStack.Push(value);
-            //Console.WriteLine("Состояние стека после:");
-            //PrintSrackWithGlow($"<-- Push {value}");
         }
 
         private static void DoPop()
@@ -114,11 +109,8 @@ namespace Alg_Lab3
             Console.WriteLine("\nКоманда 2 - POP" + "\n");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Состояние стека до и после:");
-            //PrintSrackWithGlow("<-- Pop");
             PrintStacks(Commands.POP);
             _newStack.Pop();
-            //Console.WriteLine("Состояние стека после:");
-            //PrintStackWithEmptyRow();
         }
 
         private static void DoTop()
@@ -128,7 +120,7 @@ namespace Alg_Lab3
             Console.ForegroundColor = ConsoleColor.White;
             string value = _newStack.Top().ToString();
             Console.WriteLine("Состояние стека:");
-            PrintSrackWithGlow("<-- Top");
+            PrintStackWithGlow("<-- Top");
             Console.WriteLine($"Вывод при вывозе команды Top: {value}");
         }
 
@@ -151,7 +143,7 @@ namespace Alg_Lab3
             _newStack.Print();
         }
 
-        private static void PrintSrackWithGlow(string message)
+        private static void PrintStackWithGlow(string message)
         {
             FindMaxLen(_newStack);
             line = new string('-', _maxLen + 2);
@@ -184,7 +176,7 @@ namespace Alg_Lab3
         }
 
 
-        private static void FindMaxLen(MyStack myStack)
+        private static void FindMaxLen(MyStack myStack, string newValue = null)
         {
             _maxLen = 0;
             foreach (var item in myStack)
@@ -192,12 +184,12 @@ namespace Alg_Lab3
                 string value = item.ToString();
                 _maxLen = Math.Max(value.Length, _maxLen);
             }
+            _maxLen = Math.Max(newValue.Length, _maxLen);
         }
 
         private static void PrintStacks(Commands command, string pushValue = "")
         {
-            FindMaxLen(_newStack);
-            _maxLen = Math.Max(pushValue.ToString().Length, _maxLen);
+            FindMaxLen(_newStack, pushValue);
             line = new string('-', _maxLen + 2);
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"+{line}+{emptyLine}+{line}+");
@@ -246,27 +238,5 @@ namespace Alg_Lab3
             Console.WriteLine($"+{line}+" + emptyLine + $"+{line}+");
             Console.ForegroundColor = ConsoleColor.White;
         }
-
-        //private void PrintStackWithEmptyRow()
-        //{
-        //    FindMaxLen(_newStack);
-        //    line = new string('-', _maxLen + 2);
-        //    Console.ForegroundColor = ConsoleColor.Cyan;
-        //    Console.WriteLine($"+{line}+");
-        //    WriteInConsole(line, "", _maxLen);
-        //    Console.ForegroundColor = ConsoleColor.White;
-        //    bool flag = true;
-        //    foreach (var item in _newStack.BackEnumerator())
-        //    {
-        //        if(flag) 
-        //        { 
-        //            WriteInConsole(line, item, _maxLen, "<--"); 
-        //            flag = false;
-        //            continue;
-        //        }
-        //        WriteInConsole(line, item, _maxLen);
-        //    }
-        //    Console.WriteLine("\n");
-        //}
     }
 }
