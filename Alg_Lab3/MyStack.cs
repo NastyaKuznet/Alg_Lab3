@@ -82,7 +82,7 @@ namespace Alg_Lab3
         public MyStack Clone()
         {
             MyStack copy = (MyStack)this.MemberwiseClone();
-            copy.list = this.list;
+            copy.list = (DoublyLinkedList<object>) list.Clone();
             return copy;
         }
 

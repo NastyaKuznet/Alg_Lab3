@@ -4,14 +4,8 @@
     {
         static void Main(string[] args)
         {
-            //TestPostfixCalculator testCalc = new TestPostfixCalculator();
-            //testCalc.Start();
-            MyStack stack = new MyStack();
-            stack.Push(1);
-            stack.Push(true);
-            stack.Push(3);
-
-            stack.Print();
+            TestTask4 testTask = new TestTask4();
+            testTask.TestInsertInYourselfAfterNumber();
 
             //StackController stackController = new StackController();
             //stackController.StartWorkWithFile("\"..\\\\..\\\\..\\\\..\\\\1.txt");
