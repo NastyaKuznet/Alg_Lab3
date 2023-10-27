@@ -1,4 +1,8 @@
-﻿namespace Alg_Lab3
+﻿
+using Alg_Lab3.DoublyLinkedListFolder;
+using Alg_Lab3.InterfaceFolder;
+
+namespace Alg_Lab3
 {
     public class Program
     {
@@ -6,12 +10,48 @@
         {
             //TestPostfixCalculator testCalc = new TestPostfixCalculator();
             //testCalc.Start();
-            MyStack stack = new MyStack();
-            stack.Push(1);
-            stack.Push(true);
-            stack.Push(3);
+            //MyStack stack = new MyStack();
+            //stack.Push(1);
+            //stack.Push(true);
+            //stack.Push(3);
+            //stack.Print();
 
-            stack.Print();
+            Interface interfac = new Interface();
+            interfac.Work();
+            //DoublyLinkedList<object> doublyLinkedList = new DoublyLinkedList<object>();
+            //doublyLinkedList.Add("1");
+            //doublyLinkedList.Add("2");
+            //doublyLinkedList.Add("3");
+            //doublyLinkedList.Add("4");
+            //doublyLinkedList.Add("4");
+            ////doublyLinkedList.PrintList(doublyLinkedList.Head);
+            //Task4 task4 = new Task4();
+            //Task4.ReverseList(doublyLinkedList);
+            //Task4.DeleteReplays(doublyLinkedList);
+            //Console.WriteLine();
+            //doublyLinkedList.PrintList(doublyLinkedList.Head);
+            //Task4.Task8("2","f", doublyLinkedList);
+            //Console.WriteLine();
+            //doublyLinkedList.PrintList(doublyLinkedList.Head);
+
+
+            //DoublyLinkedList<int> doublyLinkedListint1 = new DoublyLinkedList<int>();
+            //DoublyLinkedList<int> doublyLinkedListint2 = new DoublyLinkedList<int>();
+            ////doublyLinkedListint1.Add(1);
+            ////doublyLinkedListint1.Add(2);
+            ////doublyLinkedListint1.Add(3);
+            ////doublyLinkedListint1.Add(4);
+            //doublyLinkedListint2.Add(5);
+            //doublyLinkedListint2.Add(6);
+            //doublyLinkedListint2.Add(7);
+            ////doublyLinkedListint1.PrintList(doublyLinkedListint1.Head);
+            //Console.WriteLine();
+            ////doublyLinkedListint2.PrintList(doublyLinkedListint2.Head);
+            //Console.WriteLine();
+            //Task4.Task9(doublyLinkedListint1, doublyLinkedListint2);
+            //doublyLinkedListint1.PrintList(doublyLinkedListint1.Head);
+
+            //TimerStack.WorkingStack();
 
             //StackController stackController = new StackController();
             //stackController.StartWorkWithFile("\"..\\\\..\\\\..\\\\..\\\\1.txt");

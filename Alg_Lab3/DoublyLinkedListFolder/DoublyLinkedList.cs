@@ -5,8 +5,9 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
-namespace Alg_Lab3
+namespace Alg_Lab3.DoublyLinkedListFolder
 {
     public class DoublyLinkedList<T> : IEnumerable<T>
     {
@@ -17,14 +18,27 @@ namespace Alg_Lab3
         public int Count { get { return count; } }
         public bool IsEmpty { get { return count == 0; } }
 
-        public DoublyNode<T> Head { get { return head; } }
-        public DoublyNode<T> Tail { get { return tail; } }
+        public DoublyNode<T> Head { get { return head; } set { head = value; } }
+        public DoublyNode<T> Tail { get { return tail; } set { tail = value; } }
+
+        public void PrintList(DoublyNode<T> head)
+        {
+            if (head == null)
+                Console.Write("Doubly Linked list empty");
+
+            while (head != null)
+            {
+                Console.Write(head.Data + " ");
+                head = head.Next;
+            }
+            Console.WriteLine();
+        }
 
         public void Add(T data)
         {
             DoublyNode<T> node = new DoublyNode<T>(data);
 
-            if(head == null)
+            if (head == null)
             {
                 head = node;
             }
@@ -58,22 +72,22 @@ namespace Alg_Lab3
         {
             DoublyNode<T> current = head;
 
-            while(current != null)
+            while (current != null)
             {
-                if(current.Data.Equals(data))
+                if (current.Data.Equals(data))
                 {
                     break;
                 }
                 current = current.Next;
             }
 
-            if(current != null)
+            if (current != null)
             {
-                if(current.Next != null)
+                if (current.Next != null)
                     current.Next.Previous = current.Previous;
-                else 
+                else
                     tail = current.Previous;
-                if(current.Previous != null)
+                if (current.Previous != null)
                     current.Previous.Next = current.Next;
                 else
                     head = current.Next;
@@ -93,9 +107,9 @@ namespace Alg_Lab3
         public bool Contains(T data)
         {
             DoublyNode<T> current = head;
-            while(current != null)
+            while (current != null)
             {
-                if(current.Data.Equals(data))
+                if (current.Data.Equals(data))
                 {
                     return true;
                 }
@@ -107,7 +121,7 @@ namespace Alg_Lab3
         public IEnumerator<T> GetEnumerator()
         {
             DoublyNode<T> current = head;
-            while(current != null)
+            while (current != null)
             {
                 yield return current.Data;
                 current = current.Next;
