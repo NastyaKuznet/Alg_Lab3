@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace Alg_Lab3.DoublyLinkedListFolder
 {
-    public class DoublyLinkedList<T> : IEnumerable<T>
+    public class DoublyLinkedList<T> : IEnumerable<T>, ICloneable
     {
         DoublyNode<T> head;
         DoublyNode<T> tail;
@@ -95,6 +95,29 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 return true;
             }
             return false;
+        }
+
+        public object Clone()
+        {
+            DoublyLinkedList<T> newList = new DoublyLinkedList<T>();
+            DoublyNode<T> current = this.head;
+            while (current != null)
+            {
+                DoublyNode<T> newItem = new DoublyNode<T>(current.Data);
+                newList.Add(newItem.Data);
+                current = current.Next;
+            }
+            return newList;
+        }
+        public void PrintList()
+        {
+            foreach (T item in this)
+            {
+                Console.Write($"{item.ToString()} - ");
+            }
+            (int left, int top) = Console.GetCursorPosition();
+            Console.SetCursorPosition(left - 2, top);
+            Console.WriteLine(" ");
         }
 
         public void Clear()
