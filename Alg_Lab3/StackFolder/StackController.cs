@@ -14,7 +14,8 @@ namespace Alg_Lab3
             var file = new StreamReader(path);
             string? stringFromFile = file.ReadLine();
             string[] commands = stringFromFile.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            ConsoleOutputStack.StartPrintCommands(commands);
+            MyStack myStack = new MyStack();
+            ConsoleOutputStack.StartPrintCommands(commands, myStack);
         }
 
         //public void StartWorkWithList(List<string> listCommands)
@@ -23,9 +24,9 @@ namespace Alg_Lab3
         //    ConsoleOutputStack.StartPrintCommands(comands);
         //}
 
-        public void StartWorkWithList(string[] commands)
+        public void StartWorkWithList(string[] commands, MyStack myStack)
         {
-            ConsoleOutputStack.StartPrintCommands(commands);
+            ConsoleOutputStack.StartPrintCommands(commands, myStack);
         }
     }
 }

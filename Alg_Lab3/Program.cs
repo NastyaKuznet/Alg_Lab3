@@ -16,7 +16,7 @@ namespace Alg_Lab3
             //stack.Push(3);
             //stack.Print();
 
-            Interface interfac = new Interface();
+            MainInterface interfac = new MainInterface();
             interfac.Work();
             //DoublyLinkedList<object> doublyLinkedList = new DoublyLinkedList<object>();
             //doublyLinkedList.Add("1");

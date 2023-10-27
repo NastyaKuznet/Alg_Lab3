@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Alg_Lab3.InterfaceFolder
 {
-    public class Interface
+    public class MainInterface
     {
         //int[] values = new int[] { ImportantData.MinValue, ImportantData.MaxValue, ImportantData.MaxN, ImportantData.Step };
         public void Work()
         {
-            //WriteSetting();
+            //WriteSetting();[
             //ChooseChangeSetting();
 
             WriteStartAlgorithm();
@@ -127,51 +127,29 @@ namespace Alg_Lab3.InterfaceFolder
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        private void ChooseNext(string? answer = null)
+        private void ChooseNext()
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(TextInterface.EndListAlgo);
-            Console.ForegroundColor = ConsoleColor.White;
-            if (answer == null) answer = Console.ReadLine();
+            Console.Write("Введите команду: ");
+            string? answer = Console.ReadLine();
+            CheckErrors.IsNumberAlgorithm(answer, TextInterface.NumbersAlgoritms);
+            if (!CheckErrors.Check) { ChooseNext(); }
             switch (answer)
             {
-                case "1.1":
-                    Console.WriteLine(TextInterface.StackWithFile);
-                    string? answer1 = Console.ReadLine();
-                    if (answer1 == "0") Work();
-                    CheckErrors.IsRightPath(answer1);
-                    if (CheckErrors.Check)
-                    {
-                        StackController stackController = new StackController();
-                        stackController.StartWorkWithFile(answer1);
-                    }
-                    ChooseNext();
+                case "1":
+                    InterfaceStack interfaceStack = new InterfaceStack();
+                    interfaceStack.Work();
                     break;
-                case "1.2":
-                    Console.WriteLine(TextInterface.CommandsForStack);
-                    string? answer2 = Console.ReadLine();
-                    if (answer2 == "0") Work();
-                    CheckErrors.IsRightCommandsForStack(answer2);
-                    if (CheckErrors.Check)
-                    {
-                        string[] commands = answer2.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-                        StackController stackController = new StackController();
-                        stackController.StartWorkWithList(commands);
-                        ChooseNext("1.2");
-                    }
-                    else ChooseNext("1.2");
-                    ChooseNext();
+                case "2":
                     break;
-                case "0":
-                    Work();
-                    break;
-                default:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Неверная команда, попробуйте еще раз");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    ChooseNext();
+                case "3":
                     break;
             }
+        }
+
+        public static void ReturnMainInterface()
+        {
+            MainInterface mainInterface = new MainInterface();
+            mainInterface.Work();
         }
     }
 }

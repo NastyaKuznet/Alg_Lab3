@@ -1,171 +1,16 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.Metrics;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Alg_Lab3.DoublyLinkedListFolder
 {
-    public class DoublyLinkedList<T> : IEnumerable<T>, ICloneable
+    public class OperationsForDoublyList 
     {
-        DoublyNode<T> head;
-        DoublyNode<T> tail;
-        int count;
-
-        public int Count { get { return count; } }
-        public bool IsEmpty { get { return count == 0; } }
-
-        public DoublyNode<T> Head { get { return head; } set { head = value; } }
-        public DoublyNode<T> Tail { get { return tail; } set { tail = value; } }
-
-        public void PrintList(DoublyNode<T> head)
-        {
-            if (head == null)
-                Console.Write("Doubly Linked list empty");
-
-            while (head != null)
-            {
-                Console.Write(head.Data + " ");
-                head = head.Next;
-            }
-            Console.WriteLine();
-        }
-
-        public void Add(T data)
-        {
-            DoublyNode<T> node = new DoublyNode<T>(data);
-
-            if (head == null)
-            {
-                head = node;
-            }
-            else
-            {
-                tail.Next = node;
-                node.Previous = tail;
-            }
-            tail = node;
-            count++;
-        }
-
-        public void AddFirst(T data)
-        {
-            DoublyNode<T> node = new DoublyNode<T>(data);
-            DoublyNode<T> temp = head;
-            node.Next = temp;
-            head = node;
-            if (count == 0)
-            {
-                tail = head;
-            }
-            else
-            {
-                temp.Previous = node;
-            }
-            count++;
-        }
-
-        public bool Remove(T data)
-        {
-            DoublyNode<T> current = head;
-
-            while (current != null)
-            {
-                if (current.Data.Equals(data))
-                {
-                    break;
-                }
-                current = current.Next;
-            }
-
-            if (current != null)
-            {
-                if (current.Next != null)
-                    current.Next.Previous = current.Previous;
-                else
-                    tail = current.Previous;
-                if (current.Previous != null)
-                    current.Previous.Next = current.Next;
-                else
-                    head = current.Next;
-                count--;
-                return true;
-            }
-            return false;
-        }
-
-        public object Clone()
-        {
-            DoublyLinkedList<T> newList = new DoublyLinkedList<T>();
-            DoublyNode<T> current = this.head;
-            while (current != null)
-            {
-                DoublyNode<T> newItem = new DoublyNode<T>(current.Data);
-                newList.Add(newItem.Data);
-                current = current.Next;
-            }
-            return newList;
-        }
-        public void PrintList()
-        {
-            foreach (T item in this)
-            {
-                Console.Write($"{item.ToString()} - ");
-            }
-            (int left, int top) = Console.GetCursorPosition();
-            Console.SetCursorPosition(left - 2, top);
-            Console.WriteLine(" ");
-        }
-
-        public void Clear()
-        {
-            head = null;
-            tail = null;
-            count = 0;
-        }
-
-        public bool Contains(T data)
-        {
-            DoublyNode<T> current = head;
-            while (current != null)
-            {
-                if (current.Data.Equals(data))
-                {
-                    return true;
-                }
-                current = current.Next;
-            }
-            return false;
-        }
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            DoublyNode<T> current = head;
-            while (current != null)
-            {
-                yield return current.Data;
-                current = current.Next;
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable)this).GetEnumerator();
-        }
-
-        public IEnumerable<T> BackEnumerator()
-        {
-            DoublyNode<T> current = tail;
-            while (current != null)
-            {
-                yield return current.Data;
-                current = current.Previous;
-            }
-        }
-
         public static void ReverseList(DoublyLinkedList<object> list)
         {
             if (list.Head == null)
@@ -237,8 +82,6 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             }
         }
 
-
-
         public static void Task9(DoublyLinkedList<int> list1, DoublyLinkedList<int> list2)
         {
             DoublyNode<int> current = list2.Head;
@@ -247,6 +90,59 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 list1.Add(current.Data);
                 current = current.Next;
             }
+        }
+
+        List<object> unicList = new List<object>();
+        public int СountUnicElementsContainInt(DoublyLinkedList<object> list)
+        {
+            int count = 0;
+            bool isContainInt;
+            int trash;
+            StringBuilder storage = new StringBuilder();
+
+
+            foreach (object item in list)
+            {
+                if (!CheckUnic(item)) continue;
+                string strItem = item.ToString();
+                if (string.IsNullOrEmpty(strItem)) continue;
+                for (int i = 0; i < strItem.Length; i++)
+                {
+                    if (int.TryParse(strItem[i].ToString(), out trash) || strItem[i].Equals(',') || strItem[i].Equals('.'))
+                    {
+                        storage.Append(strItem[i]);
+                    }
+                    else
+                    {
+                        isContainInt = IsInt(storage);
+                        if (isContainInt) break;
+                        storage.Clear();
+                    }
+                }
+                isContainInt = IsInt(storage);
+                if (isContainInt) count++;
+                isContainInt = false;
+                storage.Clear();
+            }
+            return count;
+        }
+
+        private bool CheckUnic(object obj)
+        {
+            bool isUnic = !unicList.Contains(obj);
+            if (isUnic)
+                unicList.Add(obj);
+            return isUnic;
+        }
+
+        private bool IsDouble(StringBuilder storage)
+        {
+            return storage.ToString().TrimEnd(',').Split(',').Length > 1 || storage.ToString().TrimEnd('.').Split('.').Length > 1;
+        }
+
+        private bool IsInt(StringBuilder storage)
+        {
+            return storage.Length != 0 && !IsDouble(storage);
         }
 
         public void InsertInYourselfAfterNumber(DoublyLinkedList<object> list, object x)
