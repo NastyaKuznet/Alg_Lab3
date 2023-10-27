@@ -3,50 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Alg_Lab3.DoublyLinkedListFolder;
 
-namespace Alg_Lab3
+namespace Alg_Lab3.QueueFolder
 {
-    public class MyStack
+    public class MyQueue
     {
         DoublyLinkedList<object> list = new DoublyLinkedList<object>();
         int count;
 
         public int Count { get { return count; } }
-        public bool isEmpty { get { return count == 0; } }
+        public bool IsEmpty { get { return count == 0; } }
 
-        public void Push(object data)
+        public void Enqueue(object data)
         {
             list.Add(data);
             count++;
         }
 
-        public object Pop() 
+        public object Dequeue()
         {
-            var item = list.Tail.Data;
+            var item = list.Head.Data;
             list.Remove(item);
             count--;
             return item;
         }
 
-        public object Top()
-        {
-            return list.Tail.Data;
-        }
-
         public void Print()
         {
-            foreach(var item in list)
+            foreach (var item in list)
             {
                 Console.WriteLine(item.ToString());
             }
         }
 
-        public void PrintRevers()
+        public object Peek()
         {
-            foreach (var item in list.BackEnumerator())
-            {
-                Console.WriteLine(item.ToString());
-            }
+            return list.Head.Data;
         }
     }
 }
