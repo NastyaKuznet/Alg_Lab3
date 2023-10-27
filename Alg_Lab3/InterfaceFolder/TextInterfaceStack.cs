@@ -21,7 +21,7 @@ namespace Alg_Lab3.InterfaceFolder
             "\nВведите команды через пробел: ";
         static string endListAlgo = "\nДля возвращения на главный экран нажмите \"0\"";
 
-        static string[] numbersAlgoritms = new string[] { "1", "2" };
+        static string[] numbersAlgoritms = new string[] { "0", "1", "2" };
         public static string ListStackStart { get { return listStackStart; } }
         public static string StackWithFile { get { return stackWithFile; } }
         public static string CommandsForStack { get { return сommandsForStack; } }

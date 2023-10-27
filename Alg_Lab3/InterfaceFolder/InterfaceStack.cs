@@ -59,7 +59,7 @@ namespace Alg_Lab3.InterfaceFolder
                 StackController stackController = new StackController();
                 stackController.StartWorkWithFile(answer1);
             }
-            ChooseNext();
+            ChooseReturn();
         }
 
         private void ChooseReturn()
