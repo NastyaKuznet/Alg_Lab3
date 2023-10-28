@@ -249,15 +249,15 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             }
         }
 
-        public void InsertInYourselfAfterNumber(DoublyLinkedList<object> list, object x)
+        public void InsertInYourselfAfterNumber(object x)
         {
-            DoublyLinkedList<object> copyList = (DoublyLinkedList<object>)list.Clone();
-            DoublyNode<object> current = list.Head;
-            while (current != null)
+            DoublyLinkedList<T> copyList = (DoublyLinkedList<T>)this.Clone();
+            DoublyNode<T> current = this.Head;
+            while (current.Next != null)
             {
                 if (current.Data.Equals(x))
                 {
-                    DoublyNode<object> next = current.Next;
+                    DoublyNode<T> next = current.Next;
                     current.Next = copyList.Head;
                     copyList.Head.Previous = current;
                     copyList.Tail.Next = next;
@@ -266,36 +266,58 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 }
                 current = current.Next;
             }
+            if (this.Tail.Data.Equals(x))
+            {
+                Tail.Next = copyList.Head;
+                copyList.Head.Previous = Tail;
+                Tail = copyList.Tail;
+            }
         }
 
-        public void InsertItemIntoOrderedList(DoublyLinkedList<int> list, int x)
+        public void InsertItemIntoOrderedListInt(T x)
         {
-            DoublyNode<int> current = list.Head;
-            while (current != null)
+            if (this != null && int.TryParse(this.head.Data.ToString(), out int num) && int.TryParse(x.ToString(), out int num1) && IsOrderedListForInt())
             {
-                if (current.Data > x)
+                DoublyNode<T> current = this.Head;
+                while (current != null)
                 {
-                    DoublyNode<int> newItem = new DoublyNode<int>(x);
-                    newItem.Previous = current.Previous;
-                    current.Previous.Next = newItem;
-                    current.Previous = newItem;
-                    newItem.Next = current;
-                    return;
+                    if (int.Parse(current.Data.ToString()) > int.Parse(x.ToString()))
+                    {
+                        DoublyNode<T> newItem = new DoublyNode<T>(x);
+                        newItem.Previous = current.Previous;
+                        current.Previous.Next = newItem;
+                        current.Previous = newItem;
+                        newItem.Next = current;
+                        return;
+                    }
+                    current = current.Next;
                 }
-                current = current.Next;
+                DoublyNode<T> newItem2 = new DoublyNode<T>(x);
+                this.Tail.Next = newItem2;
+                newItem2.Previous = this.Tail;
+                Tail = newItem2;
             }
-            list.Add(x);
         }
 
-        public void InsertYourselfEndEYourself(DoublyLinkedList<object> list)
+        public bool IsOrderedListForInt()
         {
-            DoublyLinkedList<object> copyList = (DoublyLinkedList<object>)list.Clone();
-            DoublyNode<object> current = copyList.Head;
-            while (current != null)
+            if (this == null || !int.TryParse(this.head.Data.ToString(), out int num)) return false;
+            DoublyNode<T> current = this.Head;
+            while(current.Next != null)
             {
-                list.Add(current.Data);
+                if(int.Parse(current.Data.ToString()) > int.Parse(current.Next.Data.ToString()))
+                    return false;
                 current = current.Next;
             }
+            return true;
+        }
+
+        public void InsertYourselfEndEYourself()
+        {
+            DoublyLinkedList<T> copyList = (DoublyLinkedList<T>)this.Clone();
+            this.tail.Next = copyList.Head;
+            copyList.Head.Previous = copyList.Tail;
+            tail = copyList.Tail;
         }
     }
 }

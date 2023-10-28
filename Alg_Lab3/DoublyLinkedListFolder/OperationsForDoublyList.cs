@@ -144,54 +144,5 @@ namespace Alg_Lab3.DoublyLinkedListFolder
         {
             return storage.Length != 0 && !IsDouble(storage);
         }
-
-        public void InsertInYourselfAfterNumber(DoublyLinkedList<object> list, object x)
-        {
-            DoublyLinkedList<object> copyList = (DoublyLinkedList<object>)list.Clone();
-            DoublyNode<object> current = list.Head;
-            while (current != null)
-            {
-                if (current.Data.Equals(x))
-                {
-                    DoublyNode<object> next = current.Next;
-                    current.Next = copyList.Head;
-                    copyList.Head.Previous = current;
-                    copyList.Tail.Next = next;
-                    next.Previous = copyList.Tail;
-                    break;
-                }
-                current = current.Next;
-            }
-        }
-
-        public void InsertItemIntoOrderedList(DoublyLinkedList<int> list, int x)
-        {
-            DoublyNode<int> current = list.Head;
-            while (current != null)
-            {
-                if (current.Data > x)
-                {
-                    DoublyNode<int> newItem = new DoublyNode<int>(x);
-                    newItem.Previous = current.Previous;
-                    current.Previous.Next = newItem;
-                    current.Previous = newItem;
-                    newItem.Next = current;
-                    return;
-                }
-                current = current.Next;
-            }
-            list.Add(x);
-        }
-
-        public void InsertYourselfEndEYourself(DoublyLinkedList<object> list)
-        {
-            DoublyLinkedList<object> copyList = (DoublyLinkedList<object>)list.Clone();
-            DoublyNode<object> current = copyList.Head;
-            while (current != null)
-            {
-                list.Add(current.Data);
-                current = current.Next;
-            }
-        }
     }
 }

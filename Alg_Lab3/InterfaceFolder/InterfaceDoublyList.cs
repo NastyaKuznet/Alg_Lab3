@@ -45,9 +45,9 @@ namespace Alg_Lab3.InterfaceFolder
                 5,
             };
             list.PrintList();
-            object el = 3;
+            object el = 5;
             Console.Write($"Функцию вставки списка самого в себя вслед за первым вхождением числа {el}:\n");
-            task.InsertInYourselfAfterNumber(list, el);
+            list.InsertInYourselfAfterNumber( el);
             list.PrintList();
         }
 
@@ -66,13 +66,12 @@ namespace Alg_Lab3.InterfaceFolder
             list.PrintList();
             int el = 3;
             Console.Write($"Функцию вставки элемента {el} в упорядоченный список:\n");
-            task.InsertItemIntoOrderedList(list, el);
+            list.InsertItemIntoOrderedListInt(el);
             list.PrintList();
         }
 
         public void TestInsertYourselfEndEYourself()
         {
-            OperationsForDoublyList task = new OperationsForDoublyList();
             DoublyLinkedList<object> list = new DoublyLinkedList<object>
             {
                 1,
@@ -88,7 +87,7 @@ namespace Alg_Lab3.InterfaceFolder
             };
             list.PrintList();
             Console.WriteLine("Функция приписывает самого себя в конец списка: ");
-            task.InsertYourselfEndEYourself(list);
+            list.InsertYourselfEndEYourself();
             list.PrintList();
         }
     }
