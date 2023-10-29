@@ -6,8 +6,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Alg_Lab3.ImportData;
 
-namespace Alg_Lab3
+namespace Alg_Lab3.StackFolder
 {
     public class TimerStack
     {
@@ -16,15 +17,14 @@ namespace Alg_Lab3
         private static int _countOfPush = 0;
         private static int _countOfPop = 0;
         private static MyStack myStack = new MyStack();
-        public static string Path = "D:";
-      
+
 
         public static void WorkingStack()
         {
-            double[] results = new double[500];
-            CreateVector(500);
+            double[] results = new double[maxN];
+            CreateVector(maxN);
             var watсh = new Stopwatch();
-            for (int n = 1; n <= 500; n++)
+            for (int n = 1; n <= maxN; n++)
             {
                 myStack.Clear();
                 watсh.Reset();
@@ -39,17 +39,17 @@ namespace Alg_Lab3
                     Console.WriteLine($"n = {n} : {s.ToString("F8")}");
                     sumWorks += s;
                 }
-                results[n - 1] = (double)(sumWorks) / 5.0;
+                results[n - 1] = (double)sumWorks / 5.0;
             }
             FileProcessing fileProcessing = new FileProcessing();
-            File.WriteAllLines(Path + "\\stackdata" + ".csv", fileProcessing.GetValues(results, 10));
+            File.WriteAllLines(path + "\\StackData" + ".csv", fileProcessing.GetValues(results, step));
         }
 
         private static void DoStack(int[] vector)
         {
-            foreach(int num in vector)
+            foreach (int num in vector)
             {
-                switch(num)
+                switch (num)
                 {
                     case 1:
                         myStack.Push(num);
@@ -72,27 +72,27 @@ namespace Alg_Lab3
 
         private static int[] SetVector(int n)
         {
-            int[] newVector = new int[n];   
-            for(int i = 0; i < n; i++)
+            int[] newVector = new int[n];
+            for (int i = 0; i < n; i++)
             {
                 newVector[i] = _vectorOfCommands[i];
             }
             return newVector;
         }
 
-        private static void CreateVector(int n) 
-        { 
+        private static void CreateVector(int n)
+        {
             Random random = new Random();
-            for(int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
-                if(i == 0)
+                if (i == 0)
                 {
                     _vectorOfCommands.Add(1);
                     _countOfPush = 1;
                     continue;
                 }
                 int command = random.Next(1, 6);
-                if(command == 2 && _countOfPush <= _countOfPop)
+                if (command == 2 && _countOfPush <= _countOfPop)
                 {
                     _vectorOfCommands.Add(4);
                 }
@@ -101,7 +101,7 @@ namespace Alg_Lab3
                     _vectorOfCommands.Add(1);
                     _countOfPush += 1;
                 }
-                else if(command == 2)
+                else if (command == 2)
                 {
                     _vectorOfCommands.Add(2);
                     _countOfPop += 1;
