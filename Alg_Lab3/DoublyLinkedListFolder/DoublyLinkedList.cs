@@ -166,15 +166,15 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             }
         }
 
-        public static void ReverseList(DoublyLinkedList<object> list)
+        public void ReverseList()
         {
-            if (list.Head == null)
+            if (head == null)
             {
                 Console.WriteLine("Пустой список");
                 return;
             }
-            DoublyNode<object> node1 = list.Head;
-            DoublyNode<object> node2 = node1.Next;
+            DoublyNode<T> node1 = head;
+            DoublyNode<T> node2 = node1.Next;
             node1.Next = null;
             node1.Previous = node2;
             while (node2 != null)
@@ -184,25 +184,25 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 node1 = node2;
                 node2 = node2.Previous;
             }
-            list.Head = node1;
+            head = node1;
         }
 
-        public static void DeleteReplays(DoublyLinkedList<object> list)
+        public void DeleteReplays()
         {
-            if (list.Head == null)
+            if (head == null)
             {
                 Console.WriteLine("Пустой список");
                 return;
             }
             HashSet<object> hushSet = new HashSet<object>();
 
-            DoublyNode<object> current = list.Head;
+            DoublyNode<T> current = head;
 
             while (current != null)
             {
                 if (hushSet.Contains(current.Data))
                 {
-                    list.Remove(current.Data);
+                    Remove(current.Data);
                     current = current.Next;
                 }
                 else
@@ -213,38 +213,12 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             }
         }
 
-        public static void Task8(object element, object newElemen, DoublyLinkedList<object> list)
+        public void AddNewListToEnd(DoublyLinkedList<T> list)
         {
-            if (list.Head == null)
-            {
-                Console.WriteLine("Пустой список");
-                return;
-            }
-            DoublyNode<object> current = list.Head;
+            DoublyNode<T> current = list.Head;
             while (current != null)
             {
-                if (current.Data == element)
-                {
-                    DoublyNode<object> node = new DoublyNode<object>(newElemen);
-                    DoublyNode<object> temp = current.Previous;
-                    current.Previous.Next = node;
-                    current.Previous = node;
-                    node.Next = current;
-                    node.Previous = temp;
-                    return;
-                }
-                current = current.Next;
-            }
-        }
-
-
-
-        public static void Task9(DoublyLinkedList<int> list1, DoublyLinkedList<int> list2)
-        {
-            DoublyNode<int> current = list2.Head;
-            while (current != null)
-            {
-                list1.Add(current.Data);
+                Add(current.Data);
                 current = current.Next;
             }
         }
