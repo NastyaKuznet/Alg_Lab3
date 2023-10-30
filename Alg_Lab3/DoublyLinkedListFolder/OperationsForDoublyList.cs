@@ -58,11 +58,16 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             }
         }
 
-        public static void Task8(object element, object newElemen, DoublyLinkedList<object> list)
+        public static void InsertElementBefore(object element, object newElement, DoublyLinkedList<object> list)
         {
             if (list.Head == null)
             {
                 Console.WriteLine("Пустой список");
+                return;
+            }
+            if(list.Head == element)
+            {
+                list.AddFirst(newElement);
                 return;
             }
             DoublyNode<object> current = list.Head;
@@ -70,7 +75,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             {
                 if (current.Data == element)
                 {
-                    DoublyNode<object> node = new DoublyNode<object>(newElemen);
+                    DoublyNode<object> node = new DoublyNode<object>(newElement);
                     DoublyNode<object> temp = current.Previous;
                     current.Previous.Next = node;
                     current.Previous = node;
@@ -82,7 +87,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             }
         }
 
-        public static void Task9(DoublyLinkedList<int> list1, DoublyLinkedList<int> list2)
+        public static void AddNewListToEnd(DoublyLinkedList<int> list1, DoublyLinkedList<int> list2)
         {
             DoublyNode<int> current = list2.Head;
             while (current != null)

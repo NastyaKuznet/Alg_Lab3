@@ -1,6 +1,7 @@
 ﻿using Alg_Lab3.InterfaceFolder;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace Alg_Lab3
     {
         public static bool Check = true;
         private static MyStack _myStack = new MyStack();
+        public static uint UintResult;
 
         public static void IsNumberAlgorithm(string? str, string[] commands)
         {
@@ -18,11 +20,59 @@ namespace Alg_Lab3
             if (!Check)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Неизветная команда.");
+                Console.WriteLine("Неизвестная команда.");
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
+
         public static void IsRightPath(string path)
+        {
+            try
+            {
+                File.WriteAllText(path + "\\text.txt", "lol");
+                File.Delete(path + "\\text.txt");
+                Check = true;
+            }
+            catch
+            {
+                Check = false;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Неизвестный путь.");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
+        public static void IsRightPathForLists(string path)
+        {
+            try
+            {
+                foreach(string line in File.ReadLines(path))
+                {
+                    string[] str = line.Split(' ');
+                }
+            }
+            catch
+            {
+                Check = false;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Неизвестный путь.");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
+        public static void IsRightInt(string num)
+        {
+            Check = uint.TryParse(num, out UintResult);
+            if (!Check || UintResult == 0)
+            {
+                Check = false;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Число должно быть больше 0!");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
+        public static void IsRightPathForCommand(string path)
         {
             try
             {
@@ -53,7 +103,7 @@ namespace Alg_Lab3
             {
                 Check = false;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nНеверно введены команды для стека, попробуйте еще раз");
+                Console.WriteLine("\nНеверно введены команды для стека, попробуйте еще раз.");
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }

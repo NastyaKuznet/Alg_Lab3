@@ -198,20 +198,15 @@ namespace Alg_Lab3
                 if (i == _newStack.Count() - 1 && command == Commands.POP)
                     PrintForPop(_newStack.ElementAt(i));
                 else if (i == _newStack.Count() - 1 && command == Commands.PUSH)
-                    PrintForPush(pushValue);
-                else
                 {
-                    string value = Convert.ToString(_newStack.ElementAt(i));
-                    string str = new string(' ', _maxLen - value.Length);
-                    Console.WriteLine($"| {str}{value} |" + emptyLine + $"| {str}{value} |");
-                    Console.WriteLine($"+{line}+" + emptyLine + $"+{line}+");
-                    continue;
-                }           
+                    PrintForPush(pushValue);
+                    PrintCell(i);
+                }
+                else
+                    PrintCell(i);        
             }
-            if(_newStack.Count == 0 && command == Commands.PUSH)
-            {
+            if((_newStack.Count == 0 || _newStack == null) && command == Commands.PUSH)
                 PrintForPush(pushValue);
-            }
             Console.WriteLine("\n");
         }
 
@@ -237,6 +232,14 @@ namespace Alg_Lab3
             Console.WriteLine($"| {str1} |"  + emptyLine + $"| {str2}{value2} |" + $"<--Push");
             Console.WriteLine($"+{line}+" + emptyLine + $"+{line}+");
             Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        private static void PrintCell(int i)
+        {
+            string value = Convert.ToString(_newStack.ElementAt(i));
+            string str = new string(' ', _maxLen - value.Length);
+            Console.WriteLine($"| {str}{value} |" + emptyLine + $"| {str}{value} |");
+            Console.WriteLine($"+{line}+" + emptyLine + $"+{line}+");
         }
     }
 }
