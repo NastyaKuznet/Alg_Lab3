@@ -10,10 +10,9 @@ namespace Alg_Lab3
     {
         public void Start()
         {
-            PostfixCalculator calc = new PostfixCalculator("2 * ( 1 + 2 )");
+            PostfixCalculator calc = new PostfixCalculator("5 + -3 / 2 + 2 ^ 2");
             calc.Calculate(false);
             Console.WriteLine(calc.GetResult());
-            
         }
     }
 }
