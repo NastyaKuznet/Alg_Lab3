@@ -11,9 +11,8 @@ public class QueueLoader
         ConsoleOutputQueue.StartPrintCommands(commands, myQueue);
     }
 
-    public void LoadFromList(List<string> commands, MyQueue myQueue)
+    public void LoadFromList(string[] commands, MyQueue myQueue)
     {
-        string[] comm = commands.ToArray(); 
-        ConsoleOutputQueue.StartPrintCommands(comm,myQueue);
+        ConsoleOutputQueue.StartPrintCommands(commands,myQueue);
     }
 }

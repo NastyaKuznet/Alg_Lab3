@@ -140,6 +140,8 @@ namespace Alg_Lab3.InterfaceFolder
                     interfaceStack.Work();
                     break;
                 case "2":
+                    InterfaceQueue interfaceQueue = new InterfaceQueue();
+                    interfaceQueue.Work();
                     break;
                 case "3":
                     InterfaceDoublyList interfaceDoublyList = new InterfaceDoublyList();
