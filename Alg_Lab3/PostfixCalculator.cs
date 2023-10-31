@@ -144,7 +144,7 @@ namespace Alg_Lab3
                     case "/":
                         op1 = Convert.ToDouble(stack.Pop());
                         op2 = Convert.ToDouble(stack.Pop());
-                        stack.Push(op1 / op2);
+                        stack.Push(op2 / op1);
                         break;
                     case "^":
                         op1 = Convert.ToDouble(stack.Pop());

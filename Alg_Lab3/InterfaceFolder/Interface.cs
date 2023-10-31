@@ -142,6 +142,8 @@ namespace Alg_Lab3.InterfaceFolder
                 case "2":
                     break;
                 case "3":
+                    InterfaceDoublyList interfaceDoublyList = new InterfaceDoublyList();
+                    interfaceDoublyList.Work();
                     break;
             }
         }
