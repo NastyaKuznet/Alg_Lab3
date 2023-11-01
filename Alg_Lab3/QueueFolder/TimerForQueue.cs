@@ -10,7 +10,7 @@ public class TimerForQueue
         private static List<int> _vectorOfCommands = new List<int>();
         private static int _countOfEnqueue = 0;
         private static int _countOfDequeue = 0;
-        private static MyStack myStack = new MyStack();
+        private static MyQueue _myQueue = new MyQueue();
 
 
         public static void WorkingQueue()
@@ -20,7 +20,7 @@ public class TimerForQueue
             var watсh = new Stopwatch();
             for (int n = 1; n <= maxN; n++)
             {
-                myStack.Clear();
+                _myQueue.Clear();
                 watсh.Reset();
                 double sumWorks = 0;
                 int[] vector = SetVector(n);
@@ -46,19 +46,19 @@ public class TimerForQueue
                 switch (num)
                 {
                     case 1:
-                        myStack.Push(num);
+                        _myQueue.Enqueue(num);
                         break;
                     case 2:
-                        myStack.Pop();
+                        _myQueue.Dequeue();
                         break;
                     case 3:
-                        int j = Convert.ToInt32(myStack.Top());
+                        int j = Convert.ToInt32(_myQueue.Peek());
                         break;
                     case 4:
-                        bool fl = myStack.IsEmpty;
+                        bool fl = _myQueue.IsEmpty;
                         break;
                     case 5:
-                        myStack.Print();
+                        _myQueue.Print();
                         break;
                 }
             }

@@ -109,7 +109,7 @@ namespace Alg_Lab3.QueueFolder
                 }
                 else
                 {
-                    PrintCellForPrint(sb, maxLen, i, line);
+                    PrintCellForPrints(sb, maxLen, i, line);
                 }
             }
             sb.Append("\n");
@@ -117,6 +117,14 @@ namespace Alg_Lab3.QueueFolder
         }
 
         private void PrintCellForPrint(StringBuilder sb, int maxLen, int i, string line)
+        {
+            string? value = Convert.ToString(list.ElementAt(i));
+            string str = new string(' ', maxLen - value.Length);
+            sb.AppendLine($"| {str}{value} |<--");
+            sb.AppendLine($"+{line}+");
+        }
+        
+        private void PrintCellForPrints(StringBuilder sb, int maxLen, int i, string line)
         {
             string? value = Convert.ToString(list.ElementAt(i));
             string str = new string(' ', maxLen - value.Length);
