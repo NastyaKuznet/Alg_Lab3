@@ -72,7 +72,7 @@ public class ConsoleOutputQueue
                     DoIsEmpty();
                     break;
                 case Commands.print:
-                    //DoPrint
+                    DoPrint();
                     break;
             }
         }
@@ -106,7 +106,7 @@ public class ConsoleOutputQueue
         string? value = _newQueue.Peek().ToString();
         Console.WriteLine("Состояние очереди: ");
         PrintPeek();
-        Console.WriteLine($"Вывод при вызове команды Top: {value}");
+        Console.WriteLine($"Вывод при вызове команды Peek: {value}");
     }
     
     private static void DoIsEmpty()
@@ -144,13 +144,6 @@ public class ConsoleOutputQueue
         string? value = Convert.ToString(_newQueue.ElementAt(i));
         string str = new string(' ', _maxLen - value.Length);
         Console.WriteLine($"| {str}{value} |" + "<-- Peek");
-        Console.WriteLine($"+{line}+");
-    }
-    private static void WriteInConsole(string line, object item, int maxLen, string message = "", int size = 0)
-    {
-        string value = Convert.ToString(item);
-        string str = new string(' ', maxLen - value.Length);
-        Console.WriteLine($"| {str}{value} |" + message);
         Console.WriteLine($"+{line}+");
     }
     private static void PrintQueues(Commands command, string EnqueueValue = "")
