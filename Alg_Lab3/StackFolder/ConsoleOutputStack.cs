@@ -176,7 +176,10 @@ namespace Alg_Lab3
                 string value = item.ToString();
                 _maxLen = Math.Max(value.Length, _maxLen);
             }
-            _maxLen = Math.Max(newValue.Length, _maxLen);
+            if (newValue != null)
+            {
+                _maxLen = Math.Max(newValue.Length, _maxLen);
+            }
         }
 
         private static void PrintStacks(Commands command, string pushValue = "")
@@ -185,7 +188,7 @@ namespace Alg_Lab3
             line = new string('-', _maxLen + 2);
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"+{line}+{emptyLine}+{line}+");
-            for(int i = _newStack.Count()-1; i >= 0; i--)
+            for(int i = _newStack.Count() - 1; i >= 0; i--)
             {
                 if (i == _newStack.Count() - 1 && command == Commands.POP)
                     PrintForPop(_newStack.ElementAt(i));
@@ -200,6 +203,7 @@ namespace Alg_Lab3
             if((_newStack.Count == 0 || _newStack == null) && command == Commands.PUSH)
                 PrintForPush(pushValue);
             Console.WriteLine("\n");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         private static void PrintForPop(object value)

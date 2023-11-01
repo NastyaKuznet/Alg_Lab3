@@ -53,6 +53,7 @@ namespace Alg_Lab3
 
         public void Clear() {
             list.Clear();
+            count = 0;
         }
 
         public IEnumerator<object> GetEnumerator()

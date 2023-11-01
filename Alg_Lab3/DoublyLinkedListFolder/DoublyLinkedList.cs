@@ -194,20 +194,20 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 Console.WriteLine("Пустой список");
                 return;
             }
-            HashSet<object> hushSet = new HashSet<object>();
 
+            DoublyLinkedList<T> list = new DoublyLinkedList<T>();   
             DoublyNode<T> current = head;
 
             while (current != null)
             {
-                if (hushSet.Contains(current.Data))
+                if (list.Contains(current.Data))
                 {
                     Remove(current.Data);
                     current = current.Next;
                 }
                 else
                 {
-                    hushSet.Add(current.Data);
+                    list.Add(current.Data);
                     current = current.Next;
                 }
             }

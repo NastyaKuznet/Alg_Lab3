@@ -43,18 +43,23 @@ namespace Alg_Lab3.InterfaceFolder
                     ChooseNext();
                     break;
                 case "2":
+                    ChooseNext();
                     break;
                 case "3":
+                    ChooseNext();
                     break;
                 case "4":
                     TestDeleteReplays();
                     ChooseNext();
                     break;
                 case "5":
+                    ChooseNext();
                     break;
                 case "6":
+                    ChooseNext();
                     break;
                 case "7":
+                    ChooseNext();
                     break;
                 case "8":
                     TestInsertElementBefore();
@@ -65,10 +70,13 @@ namespace Alg_Lab3.InterfaceFolder
                     ChooseNext();
                     break;
                 case "10":
+                    ChooseNext();
                     break;
                 case "11":
+                    ChooseNext();
                     break;
                 case "12":
+                    ChooseNext();
                     break;
             }
         }

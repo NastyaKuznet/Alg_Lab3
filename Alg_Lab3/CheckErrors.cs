@@ -76,9 +76,10 @@ namespace Alg_Lab3
         {
             try
             {
-                var file = new StreamReader(path);
-                string? stringFromFile = file.ReadLine();
-                IsRightCommandsForStack(stringFromFile);
+                //var file = new StreamReader(path);
+                //string? stringFromFile = file.ReadLine();
+                StackController stackController = new StackController();
+                stackController.StartWorkWithFile(path);
                 Check = true;
             }
             catch

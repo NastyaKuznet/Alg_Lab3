@@ -18,7 +18,7 @@ namespace Alg_Lab3.InterfaceFolder
             "2 - POP\n" +
             "3 - TOP\n" +
             "4 - ISEMPTY\n" +
-            "5 -  PTINT\n" +
+            "5 -  PRINT\n" +
             "\nВведите команды через пробел: ";
         static string endListAlgo = "\nДля возвращения на главный экран нажмите \"0\"";
 
