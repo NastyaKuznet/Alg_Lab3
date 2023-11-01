@@ -42,38 +42,51 @@ namespace Alg_Lab3.InterfaceFolder
                     break;
                 case "1":
                     TestReverseList();
+                    ChooseNext();
                     break;
                 case "2.1":
                     TestMoveLastElementToHead();
+                    ChooseNext();
                     break;
                 case "2.2":
                     TestMoveFirstElementToTail();
+                    ChooseNext();
                     break;
                 case "3":
+                    ChooseNext();
                     break;
                 case "4":
                     TestDeleteReplays();
+                    ChooseNext();
                     break;
                 case "5":
+                    ChooseNext();
                     break;
                 case "6":
+                    ChooseNext();
                     break;
                 case "7":
                     TestDeleteAllIfContains();
+                    ChooseNext();
                     break;
                 case "8":
                     TestInsertElementBefore();
+                    ChooseNext();
                     break;
                 case "9":
                     TestAddNewList();
+                    ChooseNext();
                     break;
                 case "10":
                     TestSplitBy();
+                    ChooseNext();
                     break;
                 case "11":
+                    ChooseNext();
                     break;
                 case "12":
                     TestSwapTwoElements();
+                    ChooseNext();
                     break;
             }
         }
@@ -84,36 +97,32 @@ namespace Alg_Lab3.InterfaceFolder
             doublyLinkedList.Add("1");
             doublyLinkedList.Add("2");
             doublyLinkedList.Add("3");
-            doublyLinkedList.Add("4");
-            doublyLinkedList.Add("5");
             Console.Write("Список до: ");
             doublyLinkedList.PrintList(doublyLinkedList.Head);
             doublyLinkedList.ReverseList();
             Console.Write("\nСписок после: ");
             doublyLinkedList.PrintList(doublyLinkedList.Head);
-            ChooseNext();
         }
 
         public void TestDeleteReplays()
         {
             DoublyLinkedList<object> doublyLinkedList = new DoublyLinkedList<object>{ "1","1","2","2", "4","4"};
-            Console.Write("Список до: ");
+            Console.Write("\nСписок до: ");
             doublyLinkedList.PrintList(doublyLinkedList.Head);
-            doublyLinkedList.DeleteReplays();
+            doublyLinkedList.DeleteDuplicates();
             Console.Write("\nСписок после: ");
             doublyLinkedList.PrintList(doublyLinkedList.Head);
-            ChooseNext();
         }
 
         public void TestInsertElementBefore()
         {
-            DoublyLinkedList<object> doublyLinkedList = new DoublyLinkedList<object>() { "1", "2", "3", "2", "4", "4" };
-            Console.Write("Список до: ");
+            DoublyLinkedList<string> doublyLinkedList = new DoublyLinkedList<string>() { "1", "2", "3", "2", "4", "4" };
+            Console.WriteLine("\nВставить \"cat\" перед первым вхождением \"2\"");
+            Console.Write("\nСписок до: ");
             doublyLinkedList.PrintList(doublyLinkedList.Head);
-            OperationsForDoublyList.InsertElementBefore( "2", "cat", doublyLinkedList);
+            doublyLinkedList.InsertElementBefore( "2", "cat");
             Console.Write("\nСписок после вставки \"сat\": ");
             doublyLinkedList.PrintList(doublyLinkedList.Head);
-            ChooseNext();
         }
 
         public void TestAddNewList()
@@ -129,17 +138,26 @@ namespace Alg_Lab3.InterfaceFolder
             foreach (string line in File.ReadLines(path))
             {
                 if (i == 0)
-                {
-                    DetListFromStr(line, list1);
-                }
+                    GetListFromStr(line, list1);
                 if(i == 1)
-                {
-                    DetListFromStr(line, list2);
-                }
+                    GetListFromStr(line, list2);
                 i++;
             }
             PrintAddNewList(list1, list2);
-            ChooseNext();
+        }
+
+        private void GetListFromStr(string line, DoublyLinkedList<int> list)
+        {
+            foreach (string str in line.Split(' '))
+            {
+                if (int.TryParse(str, out int num))
+                    list.Add(num);
+                else
+                {
+                    Console.WriteLine("Некорректные данные в файле");
+                    TestAddNewList();
+                }
+            }
         }
 
         private void PrintAddNewList(DoublyLinkedList<int> list1, DoublyLinkedList<int> list2)
@@ -151,20 +169,6 @@ namespace Alg_Lab3.InterfaceFolder
             Console.Write("\nСписок после: ");
             list1.AddNewListToEnd(list2);
             list1.PrintList(list1.Head);
-        }
-
-        private void DetListFromStr(string line, DoublyLinkedList<int> list)
-        {
-            foreach (string str in line.Split(' '))
-            {
-                if(int.TryParse(str, out int num))
-                    list.Add(num);
-                else
-                {
-                    Console.WriteLine("Некорректные данные в файле");
-                    TestAddNewList();
-                }
-            }
         }
 
         public void TestСountElementsContainInt()
@@ -279,7 +283,6 @@ namespace Alg_Lab3.InterfaceFolder
             list.MoveFirstElementToTail(list);
             Console.WriteLine("Список после: ");
             list.PrintList();
-            ChooseNext();
         }
 
         public void TestDeleteAllIfContains()
@@ -298,7 +301,6 @@ namespace Alg_Lab3.InterfaceFolder
             OperationsForDoublyList.DeleteAllIfContains(list, element);
             Console.WriteLine("Список после: ");
             list.PrintList();
-            ChooseNext();
         }
 
         public void TestSplitBy()
@@ -319,7 +321,6 @@ namespace Alg_Lab3.InterfaceFolder
             temp[0].PrintList();
             Console.WriteLine("Второй получившийся список: ");
             temp[1].PrintList();
-            ChooseNext();
         }
 
         public void TestSwapTwoElements()
@@ -344,7 +345,6 @@ namespace Alg_Lab3.InterfaceFolder
             OperationsForDoublyList.SwapTwoElements(list, input1, input2);
             Console.WriteLine("Список после: ");
             list.PrintList();
-            ChooseNext();
         }
     }
 }

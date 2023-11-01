@@ -13,7 +13,7 @@ namespace Alg_Lab3
         MyStack stack = new MyStack();
         MyQueue queue = new MyQueue();
         static Dictionary<string, int> operations = new Dictionary<string, int> { { "ln" , 1 },
-            { "sin" , 1}, { "cos" , 1 }, { "sqrt" , 1 }, { "^" , 2 }, { "*" , 3 }, { "/" , 3}, { "+" , 4}, { "-" , 4 } };
+            { "sin" , 1}, { "cos" , 1 }, { "sqrt" , 1 }, { "^" , 2 }, { "*" , 3 }, { "/" , 3}, { "+" , 5}, { "-" , 4 } };
         List<string> elements = new List<string>();
         bool state = true;
         string message = "Кажется не хватает скобок.";

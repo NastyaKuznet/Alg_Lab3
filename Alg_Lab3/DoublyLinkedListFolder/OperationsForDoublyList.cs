@@ -70,7 +70,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 return;
             }
 
-            if (list.Head == element)
+            if(list.Head.Equals(element))
             {
                 list.AddFirst(newElement);
                 return;

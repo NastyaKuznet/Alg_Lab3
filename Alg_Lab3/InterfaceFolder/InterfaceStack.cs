@@ -61,7 +61,7 @@ namespace Alg_Lab3.InterfaceFolder
             {
                 MainInterface.ReturnMainInterface();
             }
-            CheckErrors.IsRightPath(answer1);
+            CheckErrors.IsRightPathForCommand(answer1);
             if (CheckErrors.Check)
             {
                 StackController stackController = new StackController();
@@ -193,10 +193,12 @@ namespace Alg_Lab3.InterfaceFolder
             switch (answer)
             {
                 case "0":
+                    _myStack.Clear();
                     MainInterface interfac = new MainInterface();
                     interfac.Work();
                     break;
                 case "1":
+                    _myStack.Clear();
                     Work();
                     break;
                 case "2":
