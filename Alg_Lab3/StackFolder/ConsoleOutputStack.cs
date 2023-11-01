@@ -17,12 +17,6 @@ namespace Alg_Lab3
         private static int _maxLen = 2;
         private static string line;
         private static string emptyLine = new string(' ', 15);
-        //public static void StartPrintCommands(string[] commands, MyStack stack) 
-        //{
-        //    GetDataFromList(commands);
-        //    _newStack = stack;
-        //    PrintCommands();
-        //}
 
         public static void StartPrintCommands(string[] commands, MyStack myStack)
         {
@@ -30,7 +24,6 @@ namespace Alg_Lab3
             GetDataFromList(commands);
             PrintCommands();
         }
-
 
         private static void GetDataFromList(string[] commands)
         {
@@ -91,7 +84,6 @@ namespace Alg_Lab3
                 }
             }
         }
-
 
         private static void DoPush(string value)
         {

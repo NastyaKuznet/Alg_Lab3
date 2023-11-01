@@ -17,13 +17,6 @@ namespace Alg_Lab3
             MyStack myStack = new MyStack();
             ConsoleOutputStack.StartPrintCommands(commands, myStack);
         }
-
-        //public void StartWorkWithList(List<string> listCommands)
-        //{
-        //    string[] comands = listCommands.ToArray();
-        //    ConsoleOutputStack.StartPrintCommands(comands);
-        //}
-
         public void StartWorkWithList(string[] commands, MyStack myStack)
         {
             ConsoleOutputStack.StartPrintCommands(commands, myStack);

@@ -187,7 +187,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             head = node1;
         }
 
-        public void DeleteReplays()
+        public void DeleteDuplicates()
         {
             if (head == null)
             {
@@ -210,6 +210,35 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                     hushSet.Add(current.Data);
                     current = current.Next;
                 }
+            }
+        }
+
+        public void InsertElementBefore(T element, T newElement)
+        {
+            if (head == null)
+            {
+                Console.WriteLine("Пустой список");
+                return;
+            }
+            if (head.Data.Equals(element))
+            {
+                AddFirst(newElement);
+                return;
+            }
+            DoublyNode<T> current = head;
+            while (current != null)
+            {
+                if (current.Data.Equals(element))
+                {
+                    DoublyNode<T> node = new DoublyNode<T>(newElement);
+                    DoublyNode<T> temp = current.Previous;
+                    current.Previous.Next = node;
+                    current.Previous = node;
+                    node.Next = current;
+                    node.Previous = temp;
+                    return;
+                }
+                current = current.Next;
             }
         }
 
