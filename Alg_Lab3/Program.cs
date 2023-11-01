@@ -8,10 +8,9 @@ namespace Alg_Lab3
     {
         static void Main(string[] args)
         {
+
             MainInterface interfac = new MainInterface();
             interfac.Work();
-            //TestPostfixCalculator testPostfixCalculator = new TestPostfixCalculator();
-            //testPostfixCalculator.Start();
         }
 
         static void TestDoublyLinkedList()

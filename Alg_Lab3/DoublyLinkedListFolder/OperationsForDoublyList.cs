@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Alg_Lab3.DoublyLinkedListFolder
 {
-    public class OperationsForDoublyList 
+    public class OperationsForDoublyList
     {
         public static void ReverseList(DoublyLinkedList<object> list)
         {
@@ -18,6 +19,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 Console.WriteLine("Пустой список");
                 return;
             }
+
             DoublyNode<object> node1 = list.Head;
             DoublyNode<object> node2 = node1.Next;
             node1.Next = null;
@@ -29,6 +31,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 node1 = node2;
                 node2 = node2.Previous;
             }
+
             list.Head = node1;
         }
 
@@ -39,6 +42,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 Console.WriteLine("Пустой список");
                 return;
             }
+
             HashSet<object> hushSet = new HashSet<object>();
 
             DoublyNode<object> current = list.Head;
@@ -65,11 +69,13 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 Console.WriteLine("Пустой список");
                 return;
             }
+
             if(list.Head.Equals(element))
             {
                 list.AddFirst(newElement);
                 return;
             }
+
             DoublyNode<object> current = list.Head;
             while (current != null)
             {
@@ -83,6 +89,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                     node.Previous = temp;
                     return;
                 }
+
                 current = current.Next;
             }
         }
@@ -98,6 +105,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
         }
 
         List<object> unicList = new List<object>();
+
         public int СountUnicElementsContainInt(DoublyLinkedList<object> list)
         {
             int count = 0;
@@ -113,7 +121,8 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 if (string.IsNullOrEmpty(strItem)) continue;
                 for (int i = 0; i < strItem.Length; i++)
                 {
-                    if (int.TryParse(strItem[i].ToString(), out trash) || strItem[i].Equals(',') || strItem[i].Equals('.'))
+                    if (int.TryParse(strItem[i].ToString(), out trash) || strItem[i].Equals(',') ||
+                        strItem[i].Equals('.'))
                     {
                         storage.Append(strItem[i]);
                     }
@@ -124,11 +133,13 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                         storage.Clear();
                     }
                 }
+
                 isContainInt = IsInt(storage);
                 if (isContainInt) count++;
                 isContainInt = false;
                 storage.Clear();
             }
+
             return count;
         }
 
@@ -142,7 +153,8 @@ namespace Alg_Lab3.DoublyLinkedListFolder
 
         private bool IsDouble(StringBuilder storage)
         {
-            return storage.ToString().TrimEnd(',').Split(',').Length > 1 || storage.ToString().TrimEnd('.').Split('.').Length > 1;
+            return storage.ToString().TrimEnd(',').Split(',').Length > 1 ||
+                   storage.ToString().TrimEnd('.').Split('.').Length > 1;
         }
 
         private bool IsInt(StringBuilder storage)
@@ -165,6 +177,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                     next.Previous = copyList.Tail;
                     break;
                 }
+
                 current = current.Next;
             }
         }
@@ -183,8 +196,10 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                     newItem.Next = current;
                     return;
                 }
+
                 current = current.Next;
             }
+
             list.Add(x);
         }
 
@@ -197,6 +212,177 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 list.Add(current.Data);
                 current = current.Next;
             }
+        }
+
+        public static void DeleteAllIfContains(DoublyLinkedList<object> list, object value)
+        {
+            DoublyNode<object> current = list.Head;
+            var count = 0;
+            while (current != null)
+            {
+                if (current.Data.Equals(value))
+                {
+                    count++;
+                }
+
+                current = current.Next;
+            }
+
+            for (var i = 0; i < count; i++)
+            {
+                list.Remove(value);
+            }
+        }
+
+        public static DoublyLinkedList<DoublyLinkedList<object>> SplitBy(DoublyLinkedList<object> list, object value)
+        {
+            var firstList = new DoublyLinkedList<object>();
+            var secondList = new DoublyLinkedList<object>();
+            var contains = false;
+            foreach (var i in list)
+            {
+                if (i!.Equals(value))
+                {
+                    contains = true;
+                    continue;
+                }
+
+                if (!contains)
+                {
+                    firstList.Add(i);
+                }
+                else
+                {
+                    secondList.Add(i);
+                }
+            }
+
+            return new DoublyLinkedList<DoublyLinkedList<object>>
+            {
+                firstList,
+                secondList
+            };
+        }
+
+        public static void SwapTwoElements(DoublyLinkedList<object> list, object obj1, object obj2)
+        {
+            DoublyNode<object> element1 = null;
+            DoublyNode<object> element2 = null;
+            DoublyNode<object> current = list.Head;
+            
+            while (current != null)
+            {
+                if (Equals(obj1, current.Data))
+                {
+                    element1 = current;
+                }
+                else if (Equals(obj2, current.Data))
+                {
+                    element2 = current;
+                }
+
+                current = current.Next;
+            }
+            if (element1 == null || element2 == null)
+            {
+                return;
+            }
+
+            SwapNode(list, element1, element2);
+        }
+
+        private static void SwapNode(DoublyLinkedList<object> list, DoublyNode<object> node1, DoublyNode<object> node2)
+        {
+            if (node1.Next == node2 || node1.Previous == node2)
+            {
+                SwapAdjacentElements(list, node1, node2);
+                return;
+            }
+            
+            if (node1.Previous != null)
+            {
+                node1.Previous.Next = node2;
+            }
+            else
+            {
+                list.Head = node2;
+            }
+
+            if (node1.Next != null)
+            {
+                node1.Next.Previous = node2;
+            }
+            else
+            {
+                list.Tail = node2;
+            }
+
+            if (node2.Previous != null)
+            {
+                node2.Previous.Next = node1;
+            }
+            else
+            {
+                list.Head = node1;
+            }
+
+            if (node2.Next != null)
+            {
+                node2.Next.Previous = node1;
+            }
+            else
+            {
+                list.Tail = node1;
+            }
+
+            DoublyNode<object> temp = node1.Previous;
+            node1.Previous = node2.Previous;
+            node2.Previous = temp;
+
+            temp = node1.Next;
+            node1.Next = node2.Next;
+            node2.Next = temp;
+        }
+
+        private static void SwapAdjacentElements(DoublyLinkedList<object> list, DoublyNode<object> nodeFirst, DoublyNode<object> nodeSecond)
+        {
+            DoublyNode<object> node1 = null;
+            DoublyNode<object> node2 = null;
+            if (nodeFirst.Next == nodeSecond)
+            {
+                node1 = nodeFirst;
+                node2 = nodeSecond;
+            }
+            else
+            {
+                node1 = nodeSecond;
+                node2 = nodeFirst;
+            }
+
+            if (node2.Next !=null)
+            {
+                node1.Next = node2.Next;
+                node1.Next.Previous = node1;
+            }
+            else
+            {
+                node1.Next = null;
+                list.Tail = node1;
+            }
+
+            if (node1.Previous != null)
+            {
+                node2.Previous = node1.Previous;
+                node1.Previous.Next = node2;
+            }
+            else
+            {
+                node2.Previous = null;
+                list.Head = node2;
+            }
+
+            node2.Next = node1;
+            node1.Previous = node2;
         }
     }
 }

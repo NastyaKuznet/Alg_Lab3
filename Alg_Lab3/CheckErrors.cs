@@ -1,10 +1,12 @@
 ﻿using Alg_Lab3.InterfaceFolder;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Alg_Lab3.QueueFolder;
 
 namespace Alg_Lab3
 {
@@ -12,6 +14,7 @@ namespace Alg_Lab3
     {
         public static bool Check = true;
         private static MyStack _myStack = new MyStack();
+        private static MyQueue _myQueue = new MyQueue();
         public static uint UintResult;
 
         public static void IsNumberAlgorithm(string? str, string[] commands)
@@ -129,6 +132,54 @@ namespace Alg_Lab3
                         break;
                     case "4":
                         bool flag = _myStack.IsEmpty;
+                        break;
+                    case "5":
+                        break;
+                    default:
+                        throw new Exception();
+                }
+            }
+        }
+        
+        public static void IsRightCommandsForQueue(string inputCommands)
+        {
+            try
+            {
+                QueueLoader queueLoader = new QueueLoader();
+                string[] commands = inputCommands.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                CheckCommandsForQueue(commands);
+                Check = true;
+            }
+            catch
+            {
+                Check = false;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nНеверно введены команды для стека, попробуйте еще раз.");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
+        private static void CheckCommandsForQueue(string[] commands)
+        {
+            foreach (string command in commands)
+            {
+                if (command.Contains(','))
+                {
+                    string value = command.Split(',')[1];
+                    _myQueue.Enqueue(value);
+                    continue;
+                }
+
+                switch (command)
+                {
+                    case "2":
+                        _myQueue.Dequeue();
+                        break;
+                    case "3":
+                        _myQueue.Peek();
+                        break;
+                    case "4":
+                        bool flag = _myQueue.IsEmpty;
                         break;
                     case "5":
                         break;
