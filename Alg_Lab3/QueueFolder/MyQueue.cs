@@ -78,6 +78,7 @@ namespace Alg_Lab3.QueueFolder
         public void Clear()
         {
             list.Clear();
+            count = 0;
         }
 
         public void PrintQueue()

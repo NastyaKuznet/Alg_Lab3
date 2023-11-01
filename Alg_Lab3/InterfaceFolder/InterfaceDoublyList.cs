@@ -53,6 +53,7 @@ namespace Alg_Lab3.InterfaceFolder
                     ChooseNext();
                     break;
                 case "3":
+                    TestСountElementsContainInt();
                     ChooseNext();
                     break;
                 case "4":
@@ -60,9 +61,11 @@ namespace Alg_Lab3.InterfaceFolder
                     ChooseNext();
                     break;
                 case "5":
+                    TestInsertInYourselfAfterNumber();
                     ChooseNext();
                     break;
                 case "6":
+                    TestInsertItemIntoOrderedList();
                     ChooseNext();
                     break;
                 case "7":
@@ -82,6 +85,7 @@ namespace Alg_Lab3.InterfaceFolder
                     ChooseNext();
                     break;
                 case "11":
+                    TestInsertYourselfEndEYourself();
                     ChooseNext();
                     break;
                 case "12":
@@ -98,20 +102,20 @@ namespace Alg_Lab3.InterfaceFolder
             doublyLinkedList.Add("2");
             doublyLinkedList.Add("3");
             Console.Write("Список до: ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
+            doublyLinkedList.PrintList();
             doublyLinkedList.ReverseList();
             Console.Write("\nСписок после: ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
+            doublyLinkedList.PrintList();
         }
 
         public void TestDeleteReplays()
         {
             DoublyLinkedList<object> doublyLinkedList = new DoublyLinkedList<object>{ "1","1","2","2", "4","4"};
             Console.Write("\nСписок до: ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
+            doublyLinkedList.PrintList();
             doublyLinkedList.DeleteDuplicates();
             Console.Write("\nСписок после: ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
+            doublyLinkedList.PrintList();
         }
 
         public void TestInsertElementBefore()
@@ -119,10 +123,10 @@ namespace Alg_Lab3.InterfaceFolder
             DoublyLinkedList<string> doublyLinkedList = new DoublyLinkedList<string>() { "1", "2", "3", "2", "4", "4" };
             Console.WriteLine("\nВставить \"cat\" перед первым вхождением \"2\"");
             Console.Write("\nСписок до: ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
+            doublyLinkedList.PrintList();
             doublyLinkedList.InsertElementBefore( "2", "cat");
             Console.Write("\nСписок после вставки \"сat\": ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
+            doublyLinkedList.PrintList();
         }
 
         public void TestAddNewList()
@@ -163,12 +167,12 @@ namespace Alg_Lab3.InterfaceFolder
         private void PrintAddNewList(DoublyLinkedList<int> list1, DoublyLinkedList<int> list2)
         {
             Console.Write("\nПервый список: ");
-            list1.PrintList(list1.Head);
+            list1.PrintList();
             Console.Write("Второй список: ");
-            list2.PrintList(list2.Head);
+            list2.PrintList();
             Console.Write("\nСписок после: ");
             list1.AddNewListToEnd(list2);
-            list1.PrintList(list1.Head);
+            list1.PrintList();
         }
 
         public void TestСountElementsContainInt()
