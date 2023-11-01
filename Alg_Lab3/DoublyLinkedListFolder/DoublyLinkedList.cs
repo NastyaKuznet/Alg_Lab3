@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -116,7 +117,15 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 Console.Write($"{item.ToString()} - ");
             }
             (int left, int top) = Console.GetCursorPosition();
-            Console.SetCursorPosition(left - 2, top);
+            if (left ==0)
+            {
+                Console.SetCursorPosition(left, top);
+            }
+            else
+            {
+                Console.SetCursorPosition(left - 2, top);
+            }
+            
             Console.WriteLine(" ");
         }
 
@@ -269,6 +278,69 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             {
                 list.Add(current.Data);
                 current = current.Next;
+            }
+        }
+        
+        public void MoveLastElementToHead(DoublyLinkedList<T> list)
+        {
+            var node = list.Head;
+            while (node.Next != list.Tail)
+            {
+                node = node.Next;
+            }
+
+            node.Next = null;
+            var temp = list.Tail;
+            list.Tail = node;
+            temp!.Next = list.Head;
+            list.Head = temp;
+        }
+
+        public void MoveFirstElementToTail(DoublyLinkedList<T> list)
+        {
+            var temp = list.Head.Next;
+            list.Head.Next = null;
+            list.Tail.Next = list.Head;
+            list.Head = temp;
+            list.Tail = list.Tail.Next;
+        }
+        
+        public T this[int index]
+        {
+            get
+            {
+                var result = Head;
+                for (var i = 0; i < index; i++)
+                {
+                    result = result?.Next;
+                }
+
+                return result!.Data;
+            }
+            set
+            {
+                if (index == Count)
+                {
+                    Add(value);
+                } else if (index == 0)
+                {
+                    Head = new DoublyNode<T>(value, Head?.Next);
+                } 
+                else
+                {
+                    var node = Head!;
+                    for (var i = 0; i < index - 1; i++)
+                    {
+                        if (node.Next == null)
+                        {
+                            break;
+                        }
+                        node = node.Next;
+                    }
+
+                    var temp = node.Next!.Next;
+                    node.Next = new DoublyNode<T>(value, temp);
+                }
             }
         }
     }

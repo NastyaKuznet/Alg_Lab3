@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace Alg_Lab3.InterfaceFolder
@@ -41,7 +43,11 @@ namespace Alg_Lab3.InterfaceFolder
                 case "1":
                     TestReverseList();
                     break;
-                case "2":
+                case "2.1":
+                    TestMoveLastElementToHead();
+                    break;
+                case "2.2":
+                    TestMoveFirstElementToTail();
                     break;
                 case "3":
                     break;
@@ -53,6 +59,7 @@ namespace Alg_Lab3.InterfaceFolder
                 case "6":
                     break;
                 case "7":
+                    TestDeleteAllIfContains();
                     break;
                 case "8":
                     TestInsertElementBefore();
@@ -61,10 +68,12 @@ namespace Alg_Lab3.InterfaceFolder
                     TestAddNewList();
                     break;
                 case "10":
+                    TestSplitBy();
                     break;
                 case "11":
                     break;
                 case "12":
+                    TestSwapTwoElements();
                     break;
             }
         }
@@ -239,6 +248,103 @@ namespace Alg_Lab3.InterfaceFolder
             Console.WriteLine("Функция приписывает самого себя в конец списка: ");
             task.InsertYourselfEndEYourself(list);
             list.PrintList();
+        }
+
+        public void TestMoveLastElementToHead()
+        {
+            DoublyLinkedList<object> list = new DoublyLinkedList<object>();
+            list.Add("1");
+            list.Add("2");
+            list.Add("3");
+            list.Add("4");
+            list.Add("5");
+            Console.WriteLine("Список до: ");
+            list.PrintList();
+            list.MoveLastElementToHead(list);
+            Console.WriteLine("Список после: ");
+            list.PrintList();
+            ChooseNext();
+        }
+
+        public void TestMoveFirstElementToTail()
+        {
+            DoublyLinkedList<object> list = new DoublyLinkedList<object>();
+            list.Add("1");
+            list.Add("2");
+            list.Add("3");
+            list.Add("4");
+            list.Add("5");
+            Console.WriteLine("Список до: ");
+            list.PrintList();
+            list.MoveFirstElementToTail(list);
+            Console.WriteLine("Список после: ");
+            list.PrintList();
+            ChooseNext();
+        }
+
+        public void TestDeleteAllIfContains()
+        {
+            DoublyLinkedList<object> list = new DoublyLinkedList<object>();
+            list.Add("132");
+            list.Add("cat");
+            list.Add("88");
+            list.Add("4");
+            list.Add("cat");
+            list.Add(10);
+            Console.WriteLine("Список до: ");
+            list.PrintList();
+            object element = "cat";
+            Console.WriteLine($"Функция удаляет из списка все вхождения элемента \"{element}\"");
+            OperationsForDoublyList.DeleteAllIfContains(list, element);
+            Console.WriteLine("Список после: ");
+            list.PrintList();
+            ChooseNext();
+        }
+
+        public void TestSplitBy()
+        {
+            DoublyLinkedList<object> list = new DoublyLinkedList<object>();
+            list.Add(2);
+            list.Add(123);
+            list.Add(4);
+            list.Add(12);
+            list.Add(0);
+            list.Add(1);
+            int element = 4;
+            Console.WriteLine("Список до: ");
+            list.PrintList();
+            Console.WriteLine($"\nРазделение списка по элементу: {element}");
+            var temp = OperationsForDoublyList.SplitBy(list,element);
+            Console.WriteLine("Первый получившийся список: ");
+            temp[0].PrintList();
+            Console.WriteLine("Второй получившийся список: ");
+            temp[1].PrintList();
+            ChooseNext();
+        }
+
+        public void TestSwapTwoElements()
+        {
+            DoublyLinkedList<object> list = new DoublyLinkedList<object>();
+            list.Add("32");
+            list.Add("cat");
+            list.Add("148");
+            list.Add("alg");
+            list.Add("1.1");
+            list.Add("go");
+            list.Add("5");
+            object element1 = 2;
+            object element2 = 4;
+            Console.WriteLine("Список до: ");
+            list.PrintList();
+            Console.Write("Введите элемент 1:  ");
+            object input1 = Console.ReadLine();
+            Console.Write("Введите элемент 2:  ");
+            object input2 = Console.ReadLine();
+            Console.WriteLine($"Функция меняет местами объекты: {input1}, {input2}");
+            OperationsForDoublyList.SwapTwoElements(list, input1, input2);
+            Console.WriteLine("Список после: ");
+            list.PrintList();
+            ChooseNext();
         }
     }
 }

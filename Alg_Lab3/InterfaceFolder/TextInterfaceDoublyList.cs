@@ -10,7 +10,8 @@ namespace Alg_Lab3.InterfaceFolder
     {
         static string listDoublyLinkStart = "ДВУСВЯЗНЫЙ СПИСОК:\n" +
             "1. Функция переворачивания списка\n" +
-            "2. Функция, которая переносит в начало (в конец), последний (первый) элемент\n" +
+            "2.1. Функция, которая переносит в начало последний элемент\n" +
+            "2.2. Функция, которая переносит в конец первый элемент\n" +
             "3. Функция, которая определяет количество различных элементов списка, содержащего целые числа\n" +
             "4. Функцию, которая удаляет из списка второй из двух одинаковых элементов\n" +
             "5. Функция вставки списка самого в себя вслед за первым вхождением числа х\n" +
@@ -28,7 +29,7 @@ namespace Alg_Lab3.InterfaceFolder
         static string listWithFile = "Введите путь к файлу: ";
         static string endListAlgo = "\nДля возвращения на главный экран нажмите \"0\"";
 
-        static string[] numbersAlgoritms = new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
+        static string[] numbersAlgoritms = new string[] { "0", "1", "2.1","2.2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
         public static string ListDoublyLinkStart { get { return listDoublyLinkStart; } }
         public static string EndListAlgo { get { return endListAlgo; } }
         public static string[] NumbersAlgoritms { get { return numbersAlgoritms; } }
