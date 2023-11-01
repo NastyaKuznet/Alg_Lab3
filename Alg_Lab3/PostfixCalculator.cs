@@ -13,7 +13,7 @@ namespace Alg_Lab3
         MyStack stack = new MyStack();
         MyQueue queue = new MyQueue();
         static Dictionary<string, int> operations = new Dictionary<string, int> { { "ln" , 1 },
-            { "sin" , 1}, { "cos" , 1 }, { "sqrt" , 1 }, { "^" , 2 }, { "*" , 3 }, { "/" , 3}, { "+" , 4}, { "-" , 4 } };
+            { "sin" , 1}, { "cos" , 1 }, { "sqrt" , 1 }, { "^" , 2 }, { "*" , 3 }, { "/" , 3}, { "+" , 5}, { "-" , 4 } };
         List<string> elements = new List<string>();
         bool state = true;
         string message = "Кажется не хватает скобок.";
@@ -22,7 +22,7 @@ namespace Alg_Lab3
 
         public PostfixCalculator(string expression) 
         {
-            elements = expression.Split(' ').ToList<string>();
+            elements = expression.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList<string>();
         }
 
         public string GetPostfixStr()
@@ -59,15 +59,15 @@ namespace Alg_Lab3
             {
                 if(double.TryParse(element, out double number))
                     queue.Enqueue(number);
-                else
+                else if (operations.ContainsKey(element))
                     CheckOperation(element);
-
-                if(element.Equals("("))
+                else if (element.Equals("("))
                     stack.Push("(");
                 else if (element.Equals(")"))
-                { 
-                    while(!stack.Top().ToString().Equals("("))
+                {
+                    while (true)
                     {
+                        if (stack.Top().ToString().Equals("(")) break;
                         queue.Enqueue(stack.Pop());
                     }
                     stack.Pop();
@@ -78,7 +78,26 @@ namespace Alg_Lab3
 
         private void CheckOperation(string element)
         {
-            if(!operations.ContainsKey(element)) return;
+            
+            //if (element.Equals("("))
+            //    stack.Push(element);
+            //else if (element.Equals("("))
+            //{
+            //    string temp = stack.Pop().ToString();
+            //    while (element.Equals("("))
+            //    {
+            //        queue.Enqueue(temp);
+            //    }
+            //}
+            //else
+            //{
+            //    if (!stack.IsEmpty)
+            //    {
+            //        if (operations[element] >= operations[stack.Top().ToString()])
+            //            queue.Enqueue(stack.Pop());
+            //    }
+            //    stack.Push(element);
+            //}
             if (stack.IsEmpty)
                 stack.Push(element);
             else
@@ -87,14 +106,13 @@ namespace Alg_Lab3
                     stack.Push(element);
                 else
                 {
-                    if (!operations.ContainsKey(stack.Top().ToString())) return;
                     if (operations[element] >= operations[stack.Top().ToString()])
                     {
-                        while (!operations.ContainsKey(element) || operations[element] > operations[stack.Top().ToString()] || stack.Top().ToString().Equals("("))
+                        while(true)
                         {
+                            if (stack.IsEmpty) break;
+                            if (stack.Top().ToString().Equals("(") || operations[element] < operations[stack.Top().ToString()]) break;
                             queue.Enqueue(stack.Pop());
-                            if (stack.IsEmpty)
-                                break;
                         }
                         stack.Push(element);
                     }

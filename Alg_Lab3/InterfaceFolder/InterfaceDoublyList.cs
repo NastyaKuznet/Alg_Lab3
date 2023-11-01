@@ -1,10 +1,4 @@
 ﻿using Alg_Lab3.DoublyLinkedListFolder;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Alg_Lab3.InterfaceFolder
 {
@@ -63,10 +57,12 @@ namespace Alg_Lab3.InterfaceFolder
                 case "10":
                     break;
                 case "11":
+                    TestInsertYourselfEndEYourself();
                     break;
                 case "12":
                     break;
             }
+            ChooseNext();
         }
 
         public void TestReverseList()
@@ -78,33 +74,30 @@ namespace Alg_Lab3.InterfaceFolder
             doublyLinkedList.Add("4");
             doublyLinkedList.Add("5");
             Console.Write("Список до: ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
+            doublyLinkedList.PrintList();
             doublyLinkedList.ReverseList();
             Console.Write("\nСписок после: ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
-            ChooseNext();
+            doublyLinkedList.PrintList();
         }
 
         public void TestDeleteReplays()
         {
             DoublyLinkedList<object> doublyLinkedList = new DoublyLinkedList<object>{ "1","1","2","2", "4","4"};
             Console.Write("Список до: ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
+            doublyLinkedList.PrintList();
             doublyLinkedList.DeleteReplays();
             Console.Write("\nСписок после: ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
-            ChooseNext();
+            doublyLinkedList.PrintList();
         }
 
         public void TestInsertElementBefore()
         {
             DoublyLinkedList<object> doublyLinkedList = new DoublyLinkedList<object>() { "1", "2", "3", "2", "4", "4" };
             Console.Write("Список до: ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
+            doublyLinkedList.PrintList();
             OperationsForDoublyList.InsertElementBefore( "2", "cat", doublyLinkedList);
             Console.Write("\nСписок после вставки \"сat\": ");
-            doublyLinkedList.PrintList(doublyLinkedList.Head);
-            ChooseNext();
+            doublyLinkedList.PrintList();
         }
 
         public void TestAddNewList()
@@ -112,7 +105,11 @@ namespace Alg_Lab3.InterfaceFolder
             Console.Write("Введите путь к файлу со списками: ");
             string? path = Console.ReadLine();
             CheckErrors.IsRightPathForLists(path);
-            if (!CheckErrors.Check) { TestAddNewList(); }
+            if (!CheckErrors.Check) 
+            {
+                if (path.Equals("0")) MainInterface.ReturnMainInterface();
+                TestAddNewList();
+            }
             List<string> strings = new List<string>();
             int i = 0;
             DoublyLinkedList<int> list1 = new DoublyLinkedList<int>();
@@ -130,18 +127,17 @@ namespace Alg_Lab3.InterfaceFolder
                 i++;
             }
             PrintAddNewList(list1, list2);
-            ChooseNext();
         }
 
         private void PrintAddNewList(DoublyLinkedList<int> list1, DoublyLinkedList<int> list2)
         {
             Console.Write("\nПервый список: ");
-            list1.PrintList(list1.Head);
+            list1.PrintList();
             Console.Write("Второй список: ");
-            list2.PrintList(list2.Head);
+            list2.PrintList();
             Console.Write("\nСписок после: ");
             list1.AddNewListToEnd(list2);
-            list1.PrintList(list1.Head);
+            list1.PrintList();
         }
 
         private void DetListFromStr(string line, DoublyLinkedList<int> list)
