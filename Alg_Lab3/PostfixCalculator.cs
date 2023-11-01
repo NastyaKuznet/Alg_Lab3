@@ -78,26 +78,6 @@ namespace Alg_Lab3
 
         private void CheckOperation(string element)
         {
-            
-            //if (element.Equals("("))
-            //    stack.Push(element);
-            //else if (element.Equals("("))
-            //{
-            //    string temp = stack.Pop().ToString();
-            //    while (element.Equals("("))
-            //    {
-            //        queue.Enqueue(temp);
-            //    }
-            //}
-            //else
-            //{
-            //    if (!stack.IsEmpty)
-            //    {
-            //        if (operations[element] >= operations[stack.Top().ToString()])
-            //            queue.Enqueue(stack.Pop());
-            //    }
-            //    stack.Push(element);
-            //}
             if (stack.IsEmpty)
                 stack.Push(element);
             else
