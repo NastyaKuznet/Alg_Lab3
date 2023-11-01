@@ -14,6 +14,7 @@ namespace Alg_Lab3
     {
         DoublyLinkedList<object> list = new DoublyLinkedList<object>();
         int count;
+        private int _maxLen;
 
         public int Count { get { return count; } }
         public bool IsEmpty { get { return count == 0; } }
@@ -52,6 +53,7 @@ namespace Alg_Lab3
 
         public void Clear() {
             list.Clear();
+            count = 0;
         }
 
         public IEnumerator<object> GetEnumerator()
@@ -63,7 +65,6 @@ namespace Alg_Lab3
                 current = current.Next;
             }
         }
-
 
         IEnumerator IEnumerable.GetEnumerator()
         {
@@ -94,14 +95,8 @@ namespace Alg_Lab3
 
         private void PrintStack()
         {
-            int maxLen = 0;
-            foreach (var item in list)
-            {
-                string value = item.ToString();
-                maxLen = Math.Max(value.Length, maxLen);
-            }
-
-            string line = new string('-', maxLen + 2);
+            FindMaxLen();
+            string line = new string('-', _maxLen + 2);
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"+{line}+");
             if(list.Count == 0)
@@ -116,23 +111,33 @@ namespace Alg_Lab3
             {
                 if (flag)
                 {
-                    string value = Convert.ToString(item);
-                    string str = new string(' ', maxLen - value.Length);
-                    sb.AppendLine($"| {str}{value} |<--");
-                    sb.AppendLine($"+{line}+");
+                    WriteInStringBuilder(item, line, sb, "<--");
                     flag = false;
                 }
                 else
-                {
-                    string value = Convert.ToString(item);
-                    string str = new string(' ', maxLen - value.Length);
-                    sb.AppendLine($"| {str}{value} |");
-                    sb.AppendLine($"+{line}+");
-                }
-               
+                    WriteInStringBuilder(item, line, sb);
             }
             sb.Append("\n");
             Console.WriteLine(sb.ToString());
         }
+
+        private void WriteInStringBuilder(object item, string line, StringBuilder sb, string temp = null)
+        {
+            string value = Convert.ToString(item);
+            string str = new string(' ', _maxLen - value.Length);
+            sb.AppendLine($"| {str}{value} |{temp}");
+            sb.AppendLine($"+{line}+");
+        }
+
+        private void FindMaxLen()
+        {
+            foreach (var item in list)
+            {
+                string value = item.ToString();
+                _maxLen = Math.Max(value.Length, _maxLen);
+            }
+        }
     }
+
+    
 }

@@ -11,7 +11,7 @@ namespace Alg_Lab3.InterfaceFolder
         static string listAlgorithms = "Структура данных:\n" +
                 "1. Работа со стеком\n" +
                 "2. Работа с очередью\n" +
-                "3. Работа со двусвязным списком\n";
+                "3. Работа с двусвязным списком\n";
       
         static string endListAlgo = "\nДля возвращения на главный экран нажмите \"0\"";
         static string[] numbersAlgoritms = new string[] { "1", "2", "3"};

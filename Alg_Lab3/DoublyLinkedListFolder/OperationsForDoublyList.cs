@@ -65,7 +65,7 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 Console.WriteLine("Пустой список");
                 return;
             }
-            if(list.Head == element)
+            if(list.Head.Equals(element))
             {
                 list.AddFirst(newElement);
                 return;
