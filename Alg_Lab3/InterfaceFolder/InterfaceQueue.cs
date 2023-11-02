@@ -29,7 +29,7 @@ public class InterfaceQueue
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine(TextInterface.EndListAlgo);
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("Введите команду для очереди: ");
+        Console.Write("Введите команду для очереди: ");
         string? input = Console.ReadLine();
         CheckErrors.IsNumberAlgorithm(input, TextInterfaceQueue.NumbersAlgoritms);
         if (!CheckErrors.Check)
