@@ -167,7 +167,6 @@ namespace Alg_Lab3
             Console.WriteLine($"+{line}+");
         }
 
-
         private static void FindMaxLen(MyStack myStack, string newValue = null)
         {
             _maxLen = 0;
@@ -176,10 +175,9 @@ namespace Alg_Lab3
                 string value = item.ToString();
                 _maxLen = Math.Max(value.Length, _maxLen);
             }
-            if (newValue != null)
-            {
-                _maxLen = Math.Max(newValue.Length, _maxLen);
-            }
+            if (newValue == null) return;
+            _maxLen = Math.Max(newValue.Length, _maxLen);
+
         }
 
         private static void PrintStacks(Commands command, string pushValue = "")

@@ -22,7 +22,7 @@ namespace Alg_Lab3
 
         public PostfixCalculator(string expression) 
         {
-            elements = expression.Split(' ').ToList<string>();
+            elements = expression.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList<string>();
         }
 
         public string GetPostfixStr()
@@ -53,21 +53,21 @@ namespace Alg_Lab3
             state = stack.IsEmpty;
         }
 
-        private void ConvertInQeueu()
+        private void ConvertInPostfix()
         {
             foreach (string element in elements) 
             {
                 if(double.TryParse(element, out double number))
                     queue.Enqueue(number);
-                else
+                else if (operations.ContainsKey(element))
                     CheckOperation(element);
-
-                if(element.Equals("("))
+                else if (element.Equals("("))
                     stack.Push("(");
                 else if (element.Equals(")"))
-                { 
-                    while(!stack.Top().ToString().Equals("("))
+                {
+                    while (true)
                     {
+                        if (stack.Top().ToString().Equals("(")) break;
                         queue.Enqueue(stack.Pop());
                     }
                     stack.Pop();
@@ -78,7 +78,6 @@ namespace Alg_Lab3
 
         private void CheckOperation(string element)
         {
-            if(!operations.ContainsKey(element)) return;
             if (stack.IsEmpty)
                 stack.Push(element);
             else
@@ -87,14 +86,13 @@ namespace Alg_Lab3
                     stack.Push(element);
                 else
                 {
-                    if (!operations.ContainsKey(stack.Top().ToString())) return;
                     if (operations[element] >= operations[stack.Top().ToString()])
                     {
-                        while (!operations.ContainsKey(element) || operations[element] > operations[stack.Top().ToString()] || stack.Top().ToString().Equals("("))
+                        while(true)
                         {
+                            if (stack.IsEmpty) break;
+                            if (stack.Top().ToString().Equals("(") || operations[element] < operations[stack.Top().ToString()]) break;
                             queue.Enqueue(stack.Pop());
-                            if (stack.IsEmpty)
-                                break;
                         }
                         stack.Push(element);
                     }
@@ -116,7 +114,7 @@ namespace Alg_Lab3
             {
                 AnalyzeParenthesisExpressions();
                 if (!state) return;
-                ConvertInQeueu();
+                ConvertInPostfix();
             }
             double op1;
             double op2;

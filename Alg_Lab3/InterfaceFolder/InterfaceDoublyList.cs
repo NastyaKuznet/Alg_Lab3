@@ -1,12 +1,5 @@
 ﻿using Alg_Lab3.DoublyLinkedListFolder;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
+
 
 namespace Alg_Lab3.InterfaceFolder
 {
@@ -93,6 +86,7 @@ namespace Alg_Lab3.InterfaceFolder
                     ChooseNext();
                     break;
             }
+            ChooseNext();
         }
 
         public void TestReverseList()
@@ -134,7 +128,11 @@ namespace Alg_Lab3.InterfaceFolder
             Console.Write("Введите путь к файлу со списками: ");
             string? path = Console.ReadLine();
             CheckErrors.IsRightPathForLists(path);
-            if (!CheckErrors.Check) { TestAddNewList(); }
+            if (!CheckErrors.Check) 
+            {
+                if (path.Equals("0")) MainInterface.ReturnMainInterface();
+                TestAddNewList();
+            }
             List<string> strings = new List<string>();
             int i = 0;
             DoublyLinkedList<int> list1 = new DoublyLinkedList<int>();
@@ -148,6 +146,19 @@ namespace Alg_Lab3.InterfaceFolder
                 i++;
             }
             PrintAddNewList(list1, list2);
+
+        }
+
+        private void PrintAddNewList(DoublyLinkedList<int> list1, DoublyLinkedList<int> list2)
+        {
+            Console.Write("\nПервый список: ");
+            list1.PrintList();
+            Console.Write("Второй список: ");
+            list2.PrintList();
+            Console.Write("\nСписок после: ");
+            list1.AddNewListToEnd(list2);
+            list1.PrintList();
+
         }
 
         private void GetListFromStr(string line, DoublyLinkedList<int> list)
@@ -211,9 +222,9 @@ namespace Alg_Lab3.InterfaceFolder
                 5,
             };
             list.PrintList();
-            object el = 3;
+            object el = 5;
             Console.Write($"Функцию вставки списка самого в себя вслед за первым вхождением числа {el}:\n");
-            task.InsertInYourselfAfterNumber(list, el);
+            list.InsertInYourselfAfterNumber( el);
             list.PrintList();
         }
 
@@ -232,13 +243,12 @@ namespace Alg_Lab3.InterfaceFolder
             list.PrintList();
             int el = 3;
             Console.Write($"Функцию вставки элемента {el} в упорядоченный список:\n");
-            task.InsertItemIntoOrderedList(list, el);
+            list.InsertItemIntoOrderedListInt(el);
             list.PrintList();
         }
 
         public void TestInsertYourselfEndEYourself()
         {
-            OperationsForDoublyList task = new OperationsForDoublyList();
             DoublyLinkedList<object> list = new DoublyLinkedList<object>
             {
                 1,
@@ -254,7 +264,7 @@ namespace Alg_Lab3.InterfaceFolder
             };
             list.PrintList();
             Console.WriteLine("Функция приписывает самого себя в конец списка: ");
-            task.InsertYourselfEndEYourself(list);
+            list.InsertYourselfEndEYourself();
             list.PrintList();
         }
 
