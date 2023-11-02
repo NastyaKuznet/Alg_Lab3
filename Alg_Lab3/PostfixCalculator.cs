@@ -53,7 +53,7 @@ namespace Alg_Lab3
             state = stack.IsEmpty;
         }
 
-        private void ConvertInQeueu()
+        private void ConvertInPostfix()
         {
             foreach (string element in elements) 
             {
@@ -114,7 +114,7 @@ namespace Alg_Lab3
             {
                 AnalyzeParenthesisExpressions();
                 if (!state) return;
-                ConvertInQeueu();
+                ConvertInPostfix();
             }
             double op1;
             double op2;
