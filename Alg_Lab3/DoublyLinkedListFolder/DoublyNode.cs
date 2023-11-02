@@ -16,5 +16,10 @@ namespace Alg_Lab3.DoublyLinkedListFolder
         {
             Data = data;
         }
+        public DoublyNode(T value, DoublyNode<T>? next = null)
+        {
+            Data = value;
+            Next = next;
+        }
     }
 }

@@ -1,4 +1,6 @@
+
 ﻿using System.Collections;
+
 
 namespace Alg_Lab3.DoublyLinkedListFolder
 {
@@ -109,7 +111,15 @@ namespace Alg_Lab3.DoublyLinkedListFolder
                 Console.Write($"{item.ToString()} - ");
             }
             (int left, int top) = Console.GetCursorPosition();
-            Console.SetCursorPosition(left - 2, top);
+            if (left ==0)
+            {
+                Console.SetCursorPosition(left, top);
+            }
+            else
+            {
+                Console.SetCursorPosition(left - 2, top);
+            }
+            
             Console.WriteLine(" ");
         }
 
@@ -180,29 +190,58 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             head = node1;
         }
 
-        public void DeleteReplays()
+        public void DeleteDuplicates()
         {
             if (head == null)
             {
                 Console.WriteLine("Пустой список");
                 return;
             }
-            HashSet<object> hushSet = new HashSet<object>();
 
+            DoublyLinkedList<T> list = new DoublyLinkedList<T>();   
             DoublyNode<T> current = head;
 
             while (current != null)
             {
-                if (hushSet.Contains(current.Data))
+                if (list.Contains(current.Data))
                 {
                     Remove(current.Data);
                     current = current.Next;
                 }
                 else
                 {
-                    hushSet.Add(current.Data);
+                    list.Add(current.Data);
                     current = current.Next;
                 }
+            }
+        }
+
+        public void InsertElementBefore(T element, T newElement)
+        {
+            if (head == null)
+            {
+                Console.WriteLine("Пустой список");
+                return;
+            }
+            if (head.Data.Equals(element))
+            {
+                AddFirst(newElement);
+                return;
+            }
+            DoublyNode<T> current = head;
+            while (current != null)
+            {
+                if (current.Data.Equals(element))
+                {
+                    DoublyNode<T> node = new DoublyNode<T>(newElement);
+                    DoublyNode<T> temp = current.Previous;
+                    current.Previous.Next = node;
+                    current.Previous = node;
+                    node.Next = current;
+                    node.Previous = temp;
+                    return;
+                }
+                current = current.Next;
             }
         }
 
@@ -285,6 +324,69 @@ namespace Alg_Lab3.DoublyLinkedListFolder
             this.tail.Next = copyList.Head;
             copyList.Head.Previous = copyList.Tail;
             tail = copyList.Tail;
+        }
+        
+        public void MoveLastElementToHead(DoublyLinkedList<T> list)
+        {
+            var node = list.Head;
+            while (node.Next != list.Tail)
+            {
+                node = node.Next;
+            }
+
+            node.Next = null;
+            var temp = list.Tail;
+            list.Tail = node;
+            temp!.Next = list.Head;
+            list.Head = temp;
+        }
+
+        public void MoveFirstElementToTail(DoublyLinkedList<T> list)
+        {
+            var temp = list.Head.Next;
+            list.Head.Next = null;
+            list.Tail.Next = list.Head;
+            list.Head = temp;
+            list.Tail = list.Tail.Next;
+        }
+        
+        public T this[int index]
+        {
+            get
+            {
+                var result = Head;
+                for (var i = 0; i < index; i++)
+                {
+                    result = result?.Next;
+                }
+
+                return result!.Data;
+            }
+            set
+            {
+                if (index == Count)
+                {
+                    Add(value);
+                } else if (index == 0)
+                {
+                    Head = new DoublyNode<T>(value, Head?.Next);
+                } 
+                else
+                {
+                    var node = Head!;
+                    for (var i = 0; i < index - 1; i++)
+                    {
+                        if (node.Next == null)
+                        {
+                            break;
+                        }
+                        node = node.Next;
+                    }
+
+                    var temp = node.Next!.Next;
+                    node.Next = new DoublyNode<T>(value, temp);
+                }
+            }
         }
     }
 }

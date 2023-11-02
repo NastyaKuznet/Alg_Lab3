@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Alg_Lab3.DoublyLinkedListFolder.DoublyLinkedList&lt;T&gt;" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAZAAAIAgAEAAJCCDAAAJAQAAAAABAAEBAADAgBQAhA=</HashCode>
+      <FileName>DoublyLinkedListFolder\DoublyLinkedList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alg_Lab3.DoublyLinkedListFolder.DoublyNode&lt;T&gt;" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>DoublyLinkedListFolder\DoublyNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.InterfaceFolder.MainInterface" Collapsed="true">
+    <Position X="11" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAABAAAAAAAAQAAAAAAAgAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>InterfaceFolder\Interface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.InterfaceFolder.InterfaceStack" Collapsed="true">
+    <Position X="11" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oQgAAgAAAABAAAAgAAAABAEAAEAAAAAACEAACEAIAIA=</HashCode>
+      <FileName>InterfaceFolder\InterfaceStack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.InterfaceFolder.InterfaceQueue" Collapsed="true">
+    <Position X="11" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQgQAoAEQAAAAQAgAEAABAAQAEAAAAAAAEAAAAAAAIA=</HashCode>
+      <FileName>InterfaceFolder\InterfaceQueue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.InterfaceFolder.InterfaceDoublyList" Collapsed="true">
+    <Position X="11" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAiABACAAABAAABBAAAAAAAABgAAABAACNAAIAIAAAE=</HashCode>
+      <FileName>InterfaceFolder\InterfaceDoublyList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.QueueFolder.MyQueue" Collapsed="true">
+    <Position X="4.25" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAEgMCAAAEABAABAAAAAQAAAAABAAEAAAAAABEAAA=</HashCode>
+      <FileName>QueueFolder\MyQueue.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alg_Lab3.QueueFolder.ConsoleOutputQueue" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQEAABCAAQAAFIAAACIAAACEAAAAAQAhACAAglAAAAA=</HashCode>
+      <FileName>QueueFolder\ConsoleOutputQueue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.QueueFolder.CommandsForQueue" Collapsed="true">
+    <Position X="4.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>QueueFolder\CommandsForQueue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.MyStack" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQhAAgIABAAAABAIBAAAAAQARACIAAAEAAAAAABECBA=</HashCode>
+      <FileName>StackFolder\MyStack.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alg_Lab3.ConsoleOutputStack" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ASEAAAAEHAABBIAAAAIAAIAIAUAAAAABAIAAgEAAAAA=</HashCode>
+      <FileName>StackFolder\ConsoleOutputStack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.CommandsForStack" Collapsed="true">
+    <Position X="6.5" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>StackFolder\CommandsForStack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.CheckErrors" Collapsed="true">
+    <Position X="1.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAgEAAAAQEAQAAAAAAAAAAQAAAAQCAAAACBBAAA=</HashCode>
+      <FileName>CheckErrors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.ImportData" Collapsed="true">
+    <Position X="1.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAgAAAAAAAABAAAAAA=</HashCode>
+      <FileName>ImportData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.QueueFolder.TimerForQueue" Collapsed="true">
+    <Position X="4.25" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABEAAAAAAAQAEQAAAgAAEAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>QueueFolder\TimerForQueue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.StackFolder.TimerStack" Collapsed="true">
+    <Position X="6.5" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEBAAAAACAAABAQAACAAAAEAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>StackFolder\TimerStack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alg_Lab3.PostfixCalculator" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAACCAAAAAhIAAADAAAAAACQAAIQFAEAAAAAAACA=</HashCode>
+      <FileName>PostfixCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lab_Alg_1.FileProcessing" Collapsed="true">
+    <Position X="1.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FileProcessing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Alg_Lab3.QueueFolder.Commands" Collapsed="true">
+    <Position X="4.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>QueueFolder\Commands.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Alg_Lab3.Commands" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACIAAAAAAAAAAAkAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>StackFolder\CommandsForStack.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
