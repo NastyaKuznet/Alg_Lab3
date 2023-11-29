@@ -175,17 +175,6 @@ namespace Alg_Lab3.InterfaceFolder
             }
         }
 
-        private void PrintAddNewList(DoublyLinkedList<int> list1, DoublyLinkedList<int> list2)
-        {
-            Console.Write("\nПервый список: ");
-            list1.PrintList();
-            Console.Write("Второй список: ");
-            list2.PrintList();
-            Console.Write("\nСписок после: ");
-            list1.AddNewListToEnd(list2);
-            list1.PrintList();
-        }
-
         public void TestСountElementsContainInt()
         {
             OperationsForDoublyList task = new OperationsForDoublyList();

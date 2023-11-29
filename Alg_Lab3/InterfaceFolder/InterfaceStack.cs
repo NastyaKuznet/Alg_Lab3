@@ -47,6 +47,11 @@ namespace Alg_Lab3.InterfaceFolder
                 case "3":
                     GetTime();
                     break;
+                case "4":
+                    TestPostfixCalculator text = new TestPostfixCalculator();
+                    text.Start();
+                    ChooseNext();
+                    break;
                 case "0":
                     MainInterface.ReturnMainInterface();
                     break;

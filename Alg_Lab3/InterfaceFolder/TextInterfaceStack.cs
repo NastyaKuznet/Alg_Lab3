@@ -11,7 +11,8 @@ namespace Alg_Lab3.InterfaceFolder
         static string listStackStart = "СТЕК:\n" +
                "1. Взять операции из файла\n" +
                "2. Ввести операции вручную\n" +
-                "3. Замер времени";
+                "3. Замер времени\n"
+            +"4. Постфиксный калькулятор";
         static string stackWithFile = "Введите путь к файлу: ";
         static string сommandsForStack = "\nКоманды для стека:\n" +
             "1,[значение] - PUSH\n" +
@@ -22,7 +23,7 @@ namespace Alg_Lab3.InterfaceFolder
             "\nВведите команды через пробел: ";
         static string endListAlgo = "\nДля возвращения на главный экран нажмите \"0\"";
 
-        static string[] numbersAlgoritms = new string[] { "0", "1", "2", "3" };
+        static string[] numbersAlgoritms = new string[] { "0", "1", "2", "3", "4" };
         public static string ListStackStart { get { return listStackStart; } }
         public static string StackWithFile { get { return stackWithFile; } }
         public static string CommandsForStack { get { return сommandsForStack; } }

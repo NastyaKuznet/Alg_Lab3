@@ -62,7 +62,7 @@ public class InterfaceQueue
         {
             MainInterface.ReturnMainInterface();
         }
-        CheckErrors.IsRightPath(input);
+        CheckErrors.IsRightPathForCommand(input);
         if (CheckErrors.Check)
         {
             QueueLoader queueLoader = new QueueLoader();
